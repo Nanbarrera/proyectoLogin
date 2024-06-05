@@ -1,0 +1,86 @@
+body{
+    background-color: rgb(172, 211, 211);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*aca configuro como se veria en computadora*/
+.despegable{
+    background: #1e1e1e;
+}
+.barra{
+    display: none;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+li{
+    list-style: none;
+}
+nav a{
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 10px;
+    display: block;
+}
+ul li a:hover{
+    background: rgb(63, 137, 235);
+}
+
+/*Configuracion en tablet*/
+@media(max-width: 850px){
+    .barra{
+        background: #1e1e1e;
+        display: block;
+    }
+    .despegable{
+        transform: translate(-100%);
+        transition: 0.5s;
+        font-size: 1.5rem;
+        width: 50%;
+        background: rgba(red, green, blue, alpha);
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    button{
+        margin: 10px;
+        
+    }
+    .botonMenu{
+        background-color: #fff;
+        background-color: #1e1e1e;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
+        background-size: 30px;
+        background-position: center;
+    }
+    /*con esta clase abro y cierro el menu */
+    .abrir_menu{
+        transform: translate(0%);
+        transition: 0.5s;
+        width: 50%;
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(2px);
+    }
+    /*con esta clase cambio las barras por una x*/
+    .colocar_x{
+        background-color: #be2323;
+        background-color: #1e1e1e;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
+        background-size: 30px;
+        background-position: center;
+    }
+}
