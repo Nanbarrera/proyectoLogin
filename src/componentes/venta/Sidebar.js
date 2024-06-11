@@ -2,9 +2,13 @@ import React from "react";
 import './Sidebar.css';
 import { SidebarData } from './SidebarData';
 
+
+
 function Sidebar() {
     return (
+    <div className="principal">
         <div className="container">
+        
             <div className="Sidebar">
                 <ul className="SidebarList">
                     {SidebarData.map((val, key) => (
@@ -22,6 +26,7 @@ function Sidebar() {
                     Salir
                 </button></div>
             </div>
+            
             <div className="content">
                 <div className="header-container">
                     <h1 className="header">Venta</h1>
@@ -76,9 +81,11 @@ function Sidebar() {
                         </div>
                         <button className="print-button">Imprimir ticket</button>
                     </div>
-                </div>
+                    </div>
+               
 
             </div>
+        </div>
         </div>
     );
 }
