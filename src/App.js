@@ -1,10 +1,11 @@
 import LoginForm from './componentes/LoginForm/Logingform';
-import Venta from './componentes/venta/Venta';
+import Sidebar from './componentes/venta/Sidebar';
+import './App.css';
 
 function App() {
   return (
     <div >
-      <Venta/>
+      <Sidebar/>
     </div>
   );
 }
