@@ -1,29 +1,19 @@
-body {
+/*body {
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.principal{
-    top: 0;
-    height: auto;
-    position: relative;
-    width: 100%;
-   
-    
-}
+}*/
 
 .container {
     display: flex;
     position: relative;
-    width: 100%;
+    flex-direction: row;
+    width: 100vw;
 }
-
-
-/* Estilos para la barra lateral */
+/*Estilos de sidebar*/
 .Sidebar {
     height: 100vh;
     width: 350px;
@@ -34,14 +24,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distribuye espacio entre elementos */
+    padding: 0;
+    display: flex;
 }
-
 .SidebarList {
     height: auto;
     padding: 0;
     width: 100%;
 }
-
 .SidebarList .row {
     width: 100%;
     height: 60px;
@@ -57,7 +47,6 @@ body {
     cursor: pointer;
     background-color: #828385;
 }
-
 .row #icon {
     flex: 20%;
     display: grid;
@@ -68,90 +57,6 @@ body {
     flex: 70%; 
 }
 
-/* Estilos para el contenido principal */
-.content {
-    /*background-color: #ffffff; /* Añadir color de fondo si se desea */
-   /* display: flex;*/
-    /*flex-direction: column;*/
-    /*height: auto;
-    width: auto;*/
- /* Add this line to make the .content a flex container */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Hace que el contenido principal ocupe el espacio restante */
-    padding: auto; /* Ajusta el relleno según sea necesario */
-}
-
-
-.main-content {
-    margin-left: 250px; /* Ancho del sidebar */
-    padding: 20px;
-    top: 0;
-}
-.header {
-    background: linear-gradient(to right, #fbe966, #ececec);
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
-    padding: 40px 0;
-    
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.search-bar label {
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-.search-bar input[type="text"] {
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-
-button {
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 3px;
-}
-
-.search-button {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.add-button {
-    background-color: #28a745;
-    color: #fff;
-    margin-left: 10px;
-}
-
-/* Estilos para la tabla */
-.content .table {
-    width: auto;
-    border-collapse: collapse;
-    padding: 0px;
-}
-
-.table th, .table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.table th {
-    background-color: #f2f2f2;
-    text-align: left;
-}
 /* Estilos para el botón de salir */
 .logoutButton {
     border-radius: 5px;
@@ -169,27 +74,42 @@ button {
     border-color: #f7f3f3; /* Cambia el color del borde al pasar el ratón sobre el botón */
 }
 
+/* Contenedor principal*/
+.content {
+    flex: 1;
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+/*Encabezado*/
+.header {
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #fbe966, #ececec);
+    padding: 40px 0;
+    font-size: 24px;
+    text-align: center;
+}
 
-
-
-/* Estilos para la barra de búsqueda y botones */
 .search-bar {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 
-label {
+.search-bar label {
     margin-right: 10px;
+    font-size: 16px;
 }
 
-input[type="text"] {
+.search-bar input[type="text"] {
     padding: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 3px;
-}
+} 
 
+/*botones del nombre del producto*/
 button {
     padding: 5px 10px;
     font-size: 16px;
@@ -197,7 +117,6 @@ button {
     border: none;
     border-radius: 3px;
 }
-
 .search-button {
     background-color: #007bff;
     color: #fff;
@@ -209,9 +128,34 @@ button {
     margin-left: 10px;
 }
 
-/* Estilos para la sección de total */
+
+/*estilos tabla*/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+
+/*Estilos para la seleccion total*/
 .total-section {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
+    flex-direction: row;
+    align-items: center;
+    
 }
 
 .total-table {
@@ -226,10 +170,39 @@ button {
     padding: 8px;
 }
 
+
+/**/
+.payment-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px; /* Agrega un relleno para espaciar los payment-items horizontalmente */
+}
+
+.payment-item {
+    margin-bottom: 30px; /* Espacio entre cada payment-item */
+    padding: 20px; /* Agrega un relleno para espaciar el contenido dentro de cada payment-item */
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payment-item > div:first-child {
+    margin-top: 20px; /* Espacio entre el texto y la cantidad */
+    font-weight: bold; /* Negrita */
+    font-size: 18px; /* Tamaño de fuente un poco más grande */
+}
+
 /* Estilos para el grupo de botones de cancelar y cobrar */
 .button-group {
-    margin-bottom: 10px;
-    align-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.button-group button {
+    margin-bottom: 10px; /* Espacio entre los botones */
 }
 
 .cancel-button,
@@ -240,31 +213,25 @@ button {
 }
 
 
-
-
-/* Estilos para los detalles de pago */
-.payment-details {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.payment-item {
-    margin-right: 20px;
-}
-
 /* Estilos para el monto a cobrar */
 .amount-to-pay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinear contenido al principio */
     margin-bottom: 10px;
-}
-
-.amount-label {
-    font-weight: bold;
 }
 
 .amount-value {
     font-size: 20px;
     color: #28a745;
+    margin-bottom: 10px; /* Espacio entre amount-value y print-button */
 }
+
+.print-button {
+    margin-top: 10px; /* Espacio debajo del print-button */
+}
+
 
 /* Estilos para el botón de imprimir ticket */
 .print-button {
@@ -272,7 +239,10 @@ button {
     color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 16px;
     cursor: pointer;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    padding: 8px 16px; /* Padding más pequeño */
+    
 }
