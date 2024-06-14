@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import './Sidebar.css';
+import './Inventario.css';
 import { SidebarData } from './SidebarData';
-import { handleDelete } from './utilidades'; // Reemplaza './utilidades' con la ruta correcta
 
 
 
 
 
-function Sidebar() {
+
+function Inventario() {
     const [searchTerm, setSearchTerm] = useState("");
     const [products, setProducts] = useState([
         { id: 1, code: "123456789", description: "Coca-Cola 500 ML", price: 20.00, quantity: 1 },
@@ -87,10 +87,7 @@ function Sidebar() {
                                                     <input className="incremento" type="number" min="0" />
                                                 </div>
                                             </td>
-                                            <td>
-                                                <button className="delete-button" onClick={() => handleDelete(product.id)}>
-                                                    <i className="fas fa-trash-alt"></i>
-                                                </button>
+                                            <td> 
                                             </td>
                                         </tr>
                                     ))}
@@ -134,4 +131,4 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;
+export default Inventario;
