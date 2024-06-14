@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import logo from './../Assets/logo.png';
-import Sidebar from "../venta/Sidebar"; // Ruta ajustada para acceder al componente Sidebar
+import Sidebar from "../inventario/Sidebar"; // Ruta ajustada para acceder al componente Sidebar
 
 const LoginForm = () => {
     const [username, setUsername] = useState("admin");
