@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './Sidebar.css';
 import { SidebarData } from './SidebarData';
+import { handleDelete } from './utilidades'; // Reemplaza './utilidades' con la ruta correcta
 
 
 
@@ -17,6 +18,14 @@ function Sidebar() {
         // Lógica para salir
         window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
     }
+
+    const [productQuantitiesCompleted, setProductQuantitiesCompleted] = useState(products.map(() => false));
+
+    const handleQuantityCompleted = (index) => {
+        const updatedProductQuantitiesCompleted = [...productQuantitiesCompleted];
+        updatedProductQuantitiesCompleted[index] = true;
+        setProductQuantitiesCompleted(updatedProductQuantitiesCompleted);
+    };
 
     return (
         <div className="principal">
@@ -50,7 +59,6 @@ function Sidebar() {
                             <label htmlFor="search">Nombre del producto:</label>
                             <input type="text" id="search" name="search" placeholder="Buscar..." />
                             <button className="search-button"><i className="fas fa-search"></i></button>
-                            <button className="add-button">Agregar</button>
                         </div>
                         <div className="tabla">
                             <table className="table">
@@ -59,30 +67,34 @@ function Sidebar() {
                                         <th>Código del producto</th>
                                         <th>Descripción del producto</th>
                                         <th>Precio de venta</th>
-                                        <th>Cantidad </th>
+                                        <th>Cantidad</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>123456789</td>
-                                        <td>Coca-Cola 500 ML</td>
-                                        <td>$20.00</td>
-                                        <td>1</td>
-                                        <td><i className="fas fa-trash-alt"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>098765432</td>
-                                        <td>Chetos</td>
-                                        <td>$15.00</td>
-                                        <td>1</td>
-                                        <td><i className="fas fa-trash-alt"></i></td>
-                                    </tr>
+                                    {products.map((product, index) => (
+                                        <tr key={product.id}>
+                                            <td>{product.code}</td>
+                                            <td>{product.description}</td>
+                                            <td>${product.price}</td>
+                                            <td>
+                                                <div className="inputCant">
+                                                    <input className="incremento" type="number" min="0" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button className="delete-button" onClick={() => handleDelete(product.id)}>
+                                                    <i className="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+
 
                                 </tbody>
                             </table>
                         </div>
-                        
+
 
                         <div className="total-section">
                             <div className="payment-details">
@@ -118,4 +130,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-

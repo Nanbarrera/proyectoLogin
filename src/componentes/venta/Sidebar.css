@@ -109,6 +109,14 @@
     border-radius: 3px;
 } 
 
+.incremento{
+    width: 40px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    border:1px solid #000;
+    text-align:center;
+}
+
+
 /*botones del nombre del producto*/
 button {
     padding: 5px 10px;
@@ -245,4 +253,8 @@ button {
     font-size: 14px; /* Tamaño de fuente más pequeño */
     padding: 8px 16px; /* Padding más pequeño */
     
+}
+.inputCant{
+    display: flex;
+    justify-content: center;
 }
