@@ -1,0 +1,178 @@
+.search-bar {
+    display: flex;
+    justify-content:flex-start;
+    margin-bottom: 50px;
+   
+}
+
+.search-bar label {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+} 
+.incremento{
+    width: 40px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    border:1px solid #000;
+    text-align:center;
+}
+
+
+/*botones del nombre del producto*/
+button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+}
+.nomBusquedaV{
+    font-weight: bold; /* Negrita */
+    font-size: 10px; /* Tamaño de fuente un poco más grande */
+    justify-content: center;
+}
+
+.add-button {
+    background-color: #28a745;
+    color: #fff;
+    margin-left: 10px;
+}
+
+
+/*estilos tabla*/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+
+/*Estilos para la seleccion total*/
+.total-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.total-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.total-table th,
+.total-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+/**/
+.payment-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px; /* Agrega un relleno para espaciar los payment-items horizontalmente */
+}
+
+.payment-item {
+    margin-bottom: 30px; /* Espacio entre cada payment-item */
+    padding: 20px; /* Agrega un relleno para espaciar el contenido dentro de cada payment-item */
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payment-item > div:first-child {
+    margin-top: 20px; /* Espacio entre el texto y la cantidad */
+    font-weight: bold; /* Negrita */
+    font-size: 18px; /* Tamaño de fuente un poco más grande */
+}
+
+.delete-buttonV{
+    justify-content: center;
+    display: flex;
+}
+
+/* Estilos para el grupo de botones de cancelar y cobrar */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.button-group button {
+    margin-bottom: 10px; /* Espacio entre los botones */
+}
+
+.cancel-buttonV,
+.checkout-buttonV {
+    margin-right: 10px;
+    background-color: #696766;
+    color: #fff;
+}
+
+
+/* Estilos para el monto a cobrar */
+.amount-to-pay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinear contenido al principio */
+    margin-bottom: 10px;
+}
+
+.amount-valueV {
+    font-size: 2em;
+    color: #28a745;
+    margin-bottom: 10px; /* Espacio entre amount-value y print-button */
+}
+
+.print-button {
+    margin-top: 10px; /* Espacio debajo del print-button */
+}
+
+
+/* Estilos para el botón de imprimir ticket */
+.print-buttonV {
+    background-color: #c9c2c2ef;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    padding: 8px 16px; /* Padding más pequeño */
+    
+}
+.inputCant{
+    display: flex;
+    justify-content: center;
+}

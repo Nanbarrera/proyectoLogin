@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import './Sidebar.css';
+import './venta.css';
 import { SidebarData } from './SidebarData';
 import { handleDelete } from './utilidades'; // Reemplaza './utilidades' con la ruta correcta
+import DeleteIcon from '@mui/icons-material/Delete'; // Importa el icono de delete
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 
 
 
 function Sidebar() {
+    //const history = useHistory(); // Inicializa useHistory
     const [searchTerm, setSearchTerm] = useState("");
     const [products, setProducts] = useState([
         { id: 1, code: "123456789", description: "Coca-Cola 500 ML", price: 20.00, quantity: 1 },
@@ -18,6 +23,14 @@ function Sidebar() {
         // Lógica para salir
         window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
     }
+
+    /*const handleViewChange = (view) => {
+        if (view === "inventario") {
+            history.push("/inventario"); // Redirige a la ruta de inventario si se selecciona la vista de inventario
+        } else {
+            // Lógica para otras vistas
+        }
+    }*/
 
     const [productQuantitiesCompleted, setProductQuantitiesCompleted] = useState(products.map(() => false));
 
@@ -30,7 +43,6 @@ function Sidebar() {
     return (
         <div className="principal">
             <div className="container">
-
                 <div className="Sidebar">
                     <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
@@ -47,7 +59,6 @@ function Sidebar() {
                     <div><button className="logoutButton" onClick={handleLogout}>
                         Salir
                     </button></div>
-
                 </div>
 
                 <div className="content">
@@ -56,8 +67,8 @@ function Sidebar() {
                     </div>
                     <div className="main-content">
                         <div className="search-bar">
-                            <label htmlFor="search">Nombre del producto:</label>
-                            <input type="text" id="search" name="search" placeholder="Buscar..." />
+                            <label className="nomBusquedaV" htmlFor="search">Nombre del producto:</label>
+                            <input type="text" id="search" placeholder="Buscar..." />
                             <button className="search-button"><i className="fas fa-search"></i></button>
                         </div>
                         <div className="tabla">
@@ -83,9 +94,10 @@ function Sidebar() {
                                                 </div>
                                             </td>
                                             <td>
-                                                <button className="delete-button" onClick={() => handleDelete(product.id)}>
-                                                    <i className="fas fa-trash-alt"></i>
-                                                </button>
+                                                 {/* Botón de eliminar producto */}
+                                                 <button className="delete-buttonV" onClick={() => handleDelete(product.id)}>
+                                                    <DeleteIcon /> {/* Icono de delete */}
+                                                    </button>
                                             </td>
                                         </tr>
                                     ))}
@@ -112,12 +124,12 @@ function Sidebar() {
                                 </div>
                             </div>
                             <div className="button-group">
-                                <button className="checkout-button">Cobrar</button>
-                                <button className="cancel-button">Cancelar</button>
+                                <button className="checkout-buttonV">Cobrar</button>
+                                <button className="cancel-buttonV">Cancelar</button>
                             </div>
                             <div className="amount-to-pay">
-                                <div className="amount-value">$35.00</div>
-                                <button className="print-button">Imprimir ticket</button>
+                                <div className="amount-valueV">$35.00</div>
+                                <button className="print-buttonV">Imprimir ticket</button>
                             </div>
                         </div>
                     </div>
