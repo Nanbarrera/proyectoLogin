@@ -3,8 +3,7 @@ import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import Sidebar from './../venta/Sidebar'
 import logo from './../Assets/logo.png';
-
-//import Sidebar from "../inventario/Inventario"; // Ruta ajustada para acceder al componente Sidebar
+import Inventario from './../inventario/Inventario';
 
 const LoginForm = () => {
     const [username, setUsername] = useState("admin");
@@ -23,7 +22,7 @@ const LoginForm = () => {
     }
 
     return isLoggedIn ? (
-        <Sidebar />
+        <Inventario/>
     ) : (
         <div className="wrapper">
             <h4 className="tituloTurno">Comenzar Nuevo Turno</h4>

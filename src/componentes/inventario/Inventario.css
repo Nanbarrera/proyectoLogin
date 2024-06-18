@@ -1,2 +1,78 @@
+.search-bar1{
+    display: flex;
+    justify-content:flex-start;
+    margin-bottom: 50px;
+}
 
+.search-bar label {
+    margin-right: 10px;
+    font-size: 20px;
+}
 
+.search-bar input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.CategoriaI{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.productosI{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ventas-ticket {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Estilos para la tabla */
+.tableI {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tableI th, .tableI td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+
+.tableI th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+/* Estilos para el monto a cobrar */
+.amount-to-payVentas {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items:flex-end;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el botón */
+.checkout-buttonVT{
+    background-color: #2996aeef;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 20px; /* Tamaño de fuente más pequeño */
+    padding: 8px 16px; /* Padding más pequeño */
+    font-weight: bold;
+}
+
+.inputCant{
+    display: flex;
+    justify-content:end;
+}
