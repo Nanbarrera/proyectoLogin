@@ -24,11 +24,11 @@ function CajaD() {
 
     return (
         <div className="containerC">
-            <div className="title-container">
-                <h2 className="header">Dinero en Caja</h2>
-                <button className="close-btn" onClick={cerrarVentana}>X</button>
+            <div className="title-containerC">
+                <h2 className="headerC">Dinero en Caja</h2>
+                <button className="close-btnC" onClick={cerrarVentana}>X</button>
             </div>
-            <div className="form-group">
+            <div className="form-groupC">
                 <label htmlFor="dineroInicial">Efectivo Inicial en caja:</label>
                 <input
                     type="text"
@@ -38,7 +38,7 @@ function CajaD() {
                     placeholder="Ingrese el dinero inicial"
                 />
             </div>
-            <button className="btn" onClick={registrarDinero}>
+            <button className="btnC" onClick={registrarDinero}>
                 Registrar Dinero Inicial
             </button>
         </div>

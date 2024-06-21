@@ -23,7 +23,7 @@ const LoginForm = () => {
     }
 
     return isLoggedIn ? (
-        <Caja/>
+        <Caja />
     ) : (
         <div className="wrapper">
             <h4 className="tituloTurno">Comenzar Nuevo Turno</h4>

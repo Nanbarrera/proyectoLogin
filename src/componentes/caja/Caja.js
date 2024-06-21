@@ -11,17 +11,10 @@ function Caja() {
     };
 
     return (
-        <div className="principal">
-            <div className="container">
-
-                
-                <div>
+        <div className="principalC">
+  
                     <CajaD />
-                </div>
-
-
-                   
-            </div>
+ 
         </div>
     );
 }
