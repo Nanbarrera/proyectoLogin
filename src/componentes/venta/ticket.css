@@ -1,0 +1,55 @@
+.ticket {
+    align-content: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+}
+
+.ticket h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-list li {
+    margin-bottom: 5px;
+}
+
+.payment-info {
+    margin-top: 20px;
+}
+
+.payment-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.payment-info p {
+    margin: 5px 0;
+}
+
+/* Puedes añadir más estilos según tus necesidades */
+
+
+.logoPrincipal{
+    width: 200px;
+    height: 200px; 
+    float: left;
+    padding: 10px;
+ }
+ 
+ .imgLogo{
+     object-fit: cover;
+     width:100%;
+     height:100%;  
+ }
+ .nombreEmpresa{
+    text-align: center;
+}

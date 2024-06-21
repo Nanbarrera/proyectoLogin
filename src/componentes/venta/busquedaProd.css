@@ -1,0 +1,38 @@
+/*estilos tabla*/
+.tableBP {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tableBP th, .tableBP td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tableBP th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+
+/*Estilos de boton*/
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.backButton{
+    background-color: #b7b9b7;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.backButton:hover {
+    background-color: #676967;
+  }

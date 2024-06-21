@@ -16,6 +16,12 @@
     border: 1px solid #ccc;
     border-radius: 3px;
 } 
+.nmBuscar{
+    text-align: center;
+}
+
+
+
 .incremento{
     width: 40px;
     font-size: 14px; /* Tamaño de fuente más pequeño */
@@ -40,6 +46,7 @@ button {
     font-weight: bold; /* Negrita */
     font-size: 10px; /* Tamaño de fuente un poco más grande */
     justify-content: center;
+    align-items: center;
 }
 
 .add-button {
@@ -175,4 +182,8 @@ button {
 .inputCant{
     display: flex;
     justify-content: center;
+}
+
+.pagoEfec{
+    text-align: center;
 }
