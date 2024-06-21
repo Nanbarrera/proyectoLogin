@@ -4,7 +4,12 @@ import { Routes, Route } from 'react-router-dom';
 import LoginForm from './componentes/LoginForm/Logingform';
 import Sidebar from './componentes/venta/Sidebar';
 import './App.css';
+<<<<<<< HEAD
 import Inventario from "./componentes/inventario/Inventario"; // Asegúrate de tener la ruta correcta aquí
+=======
+import inventario from './componentes/inventario/Inventario'; 
+import caja from './componentes/caja/Caja';
+>>>>>>> 523a6f9d6b17de3815aeb5176770b30bc76df6cb
 
 function App() {
   return (

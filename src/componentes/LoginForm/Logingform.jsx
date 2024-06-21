@@ -4,6 +4,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import Sidebar from './../venta/Sidebar'
 import logo from './../Assets/logo.png';
 import Inventario from './../inventario/Inventario';
+import Caja from "../caja/Caja";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("admin");
@@ -22,7 +23,7 @@ const LoginForm = () => {
     }
 
     return isLoggedIn ? (
-        <Inventario/>
+        <Caja/>
     ) : (
         <div className="wrapper">
             <h4 className="tituloTurno">Comenzar Nuevo Turno</h4>

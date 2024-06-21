@@ -1,0 +1,78 @@
+.container {
+  background-color: #f5f2f2;
+  padding: 25px;
+
+  box-shadow: 0 0 10px rgb(63, 63, 63);
+  width: 500px; /* Incrementado el ancho a 500px */
+  min-height: 400px; /* Incrementada la altura mínima a 400px */
+  text-align: center;
+  border: 2px solid #000;
+}
+
+.title-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  margin: 0;
+  text-align: left;
+  flex-grow: 1;
+  font-size: 30px; /* Tamaño de fuente más grande para el encabezado */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px; /* Tamaño de fuente más grande para el botón de cierre */
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.close-btn:hover {
+  color: #ff0000;
+}
+
+.divider {
+  border: none;
+  border-top: 5px solid #000;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #000000;
+  font-size: 30px; /* Tamaño de fuente más grande para las etiquetas */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Esquinas más redondeadas */
+  font-size: 30px; /* Tamaño de fuente más grande para la entrada */
+}
+
+.btn {
+  padding: 20px 20px;
+  color: rgb(0, 0, 0);
+  background-color: #75aaec;
+  border: none;
+  border-radius: 20px; /* Esquinas más redondeadas */
+  cursor: pointer;
+  font-size: 25px; /* Tamaño de fuente más grande para el botón */
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
