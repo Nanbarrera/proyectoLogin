@@ -7,9 +7,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const SidebarData = [
     {
-        title: "Venta",
+        title: "Ventas",
         icon: <AttachMoneyIcon />,
-        link: "/venta"
+        link: "/sidebar"
     },
     {
         title: "Caja",

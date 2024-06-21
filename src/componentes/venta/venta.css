@@ -1,8 +1,8 @@
+/* src/componentes/venta/venta.css */
 .search-bar {
     display: flex;
-    justify-content:flex-start;
+    align-items: center; /* Alinear elementos verticalmente al centro */
     margin-bottom: 50px;
-   
 }
 
 .search-bar label {
@@ -15,22 +15,20 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 3px;
-} 
-.nmBuscar{
+}
+
+.nmBuscar {
     text-align: center;
 }
 
-
-
-.incremento{
+.incremento {
     width: 40px;
     font-size: 14px; /* Tamaño de fuente más pequeño */
-    border:1px solid #000;
-    text-align:center;
+    border: 1px solid #000;
+    text-align: center;
 }
 
-
-/*botones del nombre del producto*/
+/* Botones del nombre del producto */
 button {
     padding: 5px 10px;
     font-size: 16px;
@@ -38,11 +36,14 @@ button {
     border: none;
     border-radius: 3px;
 }
+
 .search-button {
     background-color: #007bff;
     color: #fff;
+    margin-left: 10px; /* Añadir espacio entre el input y el botón de búsqueda */
 }
-.nomBusquedaV{
+
+.nomBusquedaV {
     font-weight: bold; /* Negrita */
     font-size: 10px; /* Tamaño de fuente un poco más grande */
     justify-content: center;
@@ -55,8 +56,23 @@ button {
     margin-left: 10px;
 }
 
+/* Estilos del botón Ventas por ticket */
+.ticket-sales-button {
+    background-color: #696766; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 5px 10px; /* Relleno del botón */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin borde */
+    border-radius: 3px; /* Bordes redondeados */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    margin-left: auto; /* Empujar el botón a la derecha */
+}
 
-/*estilos tabla*/
+.ticket-sales-button:hover {
+    background-color: #adadaa; /* Color de fondo al pasar por encima */
+}
+
+/* Estilos tabla */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -75,15 +91,13 @@ button {
     text-align: center;
 }
 
-
-/*Estilos para la seleccion total*/
+/* Estilos para la selección total */
 .total-section {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     flex-direction: row;
     align-items: center;
-    
 }
 
 .total-table {
@@ -98,8 +112,7 @@ button {
     padding: 8px;
 }
 
-
-/**/
+/* Estilos para la selección total */
 .payment-details {
     display: flex;
     flex-direction: row;
@@ -122,7 +135,7 @@ button {
     font-size: 18px; /* Tamaño de fuente un poco más grande */
 }
 
-.delete-buttonV{
+.delete-buttonV {
     justify-content: center;
     display: flex;
 }
@@ -132,8 +145,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 .button-group button {
     margin-bottom: 10px; /* Espacio entre los botones */
 }
@@ -144,7 +157,6 @@ button {
     background-color: #696766;
     color: #fff;
 }
-
 
 /* Estilos para el monto a cobrar */
 .amount-to-pay {
@@ -165,7 +177,6 @@ button {
     margin-top: 10px; /* Espacio debajo del print-button */
 }
 
-
 /* Estilos para el botón de imprimir ticket */
 .print-buttonV {
     background-color: #c9c2c2ef;
@@ -177,13 +188,14 @@ button {
     cursor: pointer;
     font-size: 14px; /* Tamaño de fuente más pequeño */
     padding: 8px 16px; /* Padding más pequeño */
-    
 }
-.inputCant{
+
+.inputCant {
     display: flex;
     justify-content: center;
 }
 
-.pagoEfec{
+.pagoEfec {
     text-align: center;
 }
+

@@ -5,10 +5,10 @@ import CajaD from './cajaD';
 
 
 function Caja() {
-    const handleLogout = () => {
+    /*const handleLogout = () => {
         // Lógica para salir
         window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
-    };
+    };*/
 
     return (
         <div className="principalC">

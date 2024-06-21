@@ -6,15 +6,16 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const SidebarData = [
+
     {
-        title: "Venta",
+        title: "Ventas",
         icon: <AttachMoneyIcon />,
         link: "/sidebar"
     },
     {
         title: "Caja",
         icon: <AdfScannerIcon />,
-        link: "/caja"
+        link: "/cajaTotal "
     },
     {
         title: "Productos",

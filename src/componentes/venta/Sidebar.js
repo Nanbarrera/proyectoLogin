@@ -6,16 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import { ProductContext } from './ProductContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Ticket from './Ticket'; // Ajusta la ruta según la ubicación de Ticket.js
-
+import Ticket from './Ticket';
 
 function Sidebar() {
     const navigate = useNavigate();
     const { products, deleteProduct, updateProductQuantity } = useContext(ProductContext);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [cashPayment, setCashPayment] = useState("0"); // Inicializar con "0"
+    const [cashPayment, setCashPayment] = useState("0");
     const [change, setChange] = useState(0.00);
-    const [showTicket, setShowTicket] = useState(false); // Estado para mostrar el ticket
+    const [showTicket, setShowTicket] = useState(false);
 
     const handleLogout = () => {
         navigate("/login");
@@ -31,7 +30,7 @@ function Sidebar() {
     }
 
     const handleQuantityChange = (id, value) => {
-        const quantity = parseInt(value) || 0; // Asegurar que sea un número
+        const quantity = parseInt(value) || 0;
         updateProductQuantity(id, quantity);
         updateTotalPrice(products.map(product =>
             product.id === id ? { ...product, quantity } : product
@@ -41,7 +40,7 @@ function Sidebar() {
     const updateTotalPrice = (products) => {
         const total = products.reduce((acc, product) => {
             const quantity = product.quantity || 0;
-            const price = parseFloat(product.price) || 0; // Asegurar que el precio sea un número
+            const price = parseFloat(product.price) || 0;
             return acc + (price * quantity);
         }, 0);
         setTotalPrice(total);
@@ -52,21 +51,25 @@ function Sidebar() {
     }, [products]);
 
     useEffect(() => {
-        setChange((parseFloat(cashPayment) - totalPrice).toFixed(2)); // Actualizar cambio correctamente
+        setChange((parseFloat(cashPayment) - totalPrice).toFixed(2));
     }, [cashPayment, totalPrice]);
 
     const handleCashPaymentChange = (e) => {
-        const value = e.target.value.trim(); // Eliminar espacios al inicio y al final
+        const value = e.target.value.trim();
         if (value === "") {
-            setCashPayment("0"); // Si no hay ningún valor, mostrar "0"
+            setCashPayment("0");
         } else if (/^\d*\.?\d*$/.test(value)) {
-            // Validar que el valor ingresado sea numérico con 0 o 1 punto decimal
             setCashPayment(value);
         }
     }
-    
+
     const handleCheckout = () => {
-        navigate('/ticket'); // Navegar a la página del ticket al hacer clic en "Cobrar"
+        navigate('/ticket');
+    }
+
+    const handleVentasPorTicket = () => {
+        // Lógica para el botón "Ventas por ticket"
+        console.log("Ventas por ticket");
     }
 
     return (
@@ -103,6 +106,9 @@ function Sidebar() {
                             <button className="search-button" onClick={handleNavigation}>
                                 <i className="fas fa-search"></i>
                             </button>
+                            <button className="ticket-sales-button" onClick={handleVentasPorTicket}>
+                                Ventas por ticket
+                            </button>
                         </div>
                         <div className="tabla">
                             <table className="table">
@@ -125,7 +131,7 @@ function Sidebar() {
                                                 <div className="inputCant">
                                                     <input
                                                         className="incremento"
-                                                        style={{ width: "60px", height: "30px" }} // Ajusta el tamaño aquí
+                                                        style={{ width: "60px", height: "30px" }}
                                                         type="number"
                                                         min="0"
                                                         value={product.quantity || 0}
@@ -155,7 +161,7 @@ function Sidebar() {
                                     <div>
                                         <input className="pagoEfec"
                                             type="text"
-                                            style={{ width: "80px", height: "30px" }} // Ajusta el tamaño aquí
+                                            style={{ width: "80px", height: "30px" }}
                                             value={cashPayment}
                                             onChange={handleCashPaymentChange}
                                         />
@@ -176,7 +182,6 @@ function Sidebar() {
                             </div>
                         </div>
                     </div>
-                    {/* Mostrar el componente Ticket si showTicket es true */}
                     {showTicket && <Ticket products={products} totalPrice={totalPrice} cashPayment={cashPayment} change={change} />}
                 </div>
             </div>
@@ -185,8 +190,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-
-
-
-

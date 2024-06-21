@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import './Inventario.css';
 import { SidebarData } from './SidebarData';
+import { useNavigate } from 'react-router-dom';
 
 
 function Inventario() {
+    const navigate = useNavigate();  // Inicializa el hook useNavigate
 
     const handleLogout = () => {
         // Lógica para salir
@@ -47,12 +49,6 @@ function Inventario() {
                             <label className="productosI" htmlFor="search">Productos:</label>
                             <input type="text" id="search" name="search" placeholder="Buscar..." />
                             <button className="search-button"><i className="fas fa-search"></i></button>
-                        </div>
-                        <div className="amount-to-payVentas">
-                            <div className="VentasTicket">
-                                <button className="checkout-buttonVT">Ventas por Ticket</button>
-                            </div>
-
                         </div>
 
                         <div className="tabla">

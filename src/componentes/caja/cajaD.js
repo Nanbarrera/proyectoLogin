@@ -1,8 +1,11 @@
+// src/componentes/caja/CajaD.js
 import React, { useState } from 'react';
 import './caja.css';
+import { useNavigate } from 'react-router-dom';
 
 function CajaD() {
     const [dineroInicial, setDineroInicial] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -12,14 +15,15 @@ function CajaD() {
 
     const registrarDinero = () => {
         if (dineroInicial) {
-            alert(`Dinero inicial en caja registrado: ${dineroInicial}`);
+            //alert(`Dinero inicial en caja registrado: ${dineroInicial}`);
+            navigate('/sidebar');
         } else {
             alert('Por favor ingrese el dinero inicial en caja.');
         }
     };
 
     const cerrarVentana = () => {
-        alert('Ventana cerrada');
+        navigate("/login");
     };
 
     return (
@@ -46,3 +50,6 @@ function CajaD() {
 }
 
 export default CajaD;
+
+
+

@@ -15,21 +15,20 @@
 
 
 
+// src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Usa createRoot desde 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'; // Solo importa BrowserRouter aquí
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root')); // Usa createRoot para crear la raíz
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+ReactDOM.render(
+    <React.StrictMode>
+        <Router>
+            <App />
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
-reportWebVitals();
 

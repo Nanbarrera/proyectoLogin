@@ -1,30 +1,27 @@
+// src/componentes/LoginForm/LoginForm.js
 import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
-import Sidebar from './../venta/Sidebar'
+import { useNavigate } from 'react-router-dom';
 import logo from './../Assets/logo.png';
-import Inventario from './../inventario/Inventario';
-import Caja from "../caja/Caja";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("admin");
     const [password, setPassword] = useState("123456");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Aquí iría tu lógica de autenticación, como consultar una base de datos o verificar las credenciales
-        // Por simplicidad, aquí solo comprobaremos que el usuario y la contraseña no estén vacíos
         if (username && password) {
-            setIsLoggedIn(true); // Establecer el estado de inicio de sesión como verdadero
+            setIsLoggedIn(true);
+            navigate('/caja');
         } else {
             alert("Por favor, introduce un nombre de usuario y una contraseña.");
         }
     }
 
-    return isLoggedIn ? (
-        <Caja />
-    ) : (
+    return (
         <div className="wrapper">
             <h4 className="tituloTurno">Comenzar Nuevo Turno</h4>
             <div className="logoPrincipal">
@@ -44,7 +41,6 @@ const LoginForm = () => {
 
                 <div className="botones">
                     <button className="acceder" type="submit">Acceder</button>
-                    {/* No necesitas un botón de "Salir" en el formulario de inicio de sesión */}
                 </div>
             </form>
         </div>
@@ -52,3 +48,5 @@ const LoginForm = () => {
 }
 
 export default LoginForm;
+
+
