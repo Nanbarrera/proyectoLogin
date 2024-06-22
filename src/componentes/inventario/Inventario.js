@@ -42,12 +42,12 @@ function Inventario() {
                     <div className="main-content">
                         <div className="search-bar1">
                             <label className="CategoriaI" htmlFor="search">Categoría:</label>
-                            <input type="text" id="search" name="search" placeholder="Buscar..." />
+                            <input className="Ibuscar" type="text" id="search" name="search" placeholder="Buscar..." />
                             <button className="search-button"><i className="fas fa-search"></i></button>
                         </div>
                         <div className="search-bar1">
                             <label className="productosI" htmlFor="search">Productos:</label>
-                            <input type="text" id="search" name="search" placeholder="Buscar..." />
+                            <input className="Ibuscar" type="text" id="search" name="search" placeholder="Buscar..." />
                             <button className="search-button"><i className="fas fa-search"></i></button>
                         </div>
 
