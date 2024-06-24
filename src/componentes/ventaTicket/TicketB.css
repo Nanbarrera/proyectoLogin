@@ -1,0 +1,70 @@
+/* Estilos para el contenedor principal */
+.TicketV-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el título "Tickets" */
+.TicketV-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos para el área principal de contenido */
+.main-content {
+    margin-top: 20px;
+}
+
+/* Estilos para el formulario de búsqueda */
+.TicketV {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.TicketV input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.TicketV .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.TicketV .search-button i {
+    font-size: 18px;
+}
+
+/* Estilos para la lista de tickets */
+.ticket-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ticket {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ticket:hover {
+    background-color: #f0f0f0;
+}
