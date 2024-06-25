@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './Ticket';
 
+
 function Sidebar() {
     const navigate = useNavigate();
     const { products, deleteProduct, updateProductQuantity } = useContext(ProductContext);
