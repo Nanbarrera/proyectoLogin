@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import LoginForm from './../componentes/LoginForm/Logingform';
 import Sidebar from './../componentes/venta/Sidebar';
 import BusquedaProd from './../componentes/venta/busquedaProd';
-import TicketPage from './../componentes/venta/TicketPage';
+import TicketPage from './../componentes/ventaTicket/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
 import Empleado from '../componentes/empleado/Empleado';
@@ -11,7 +11,7 @@ import Empleado from '../componentes/empleado/Empleado';
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/empleado" element={<Empleado />}></Route>
+            <Route path="/empleado" element={<Empleado />} />
             <Route path="/inventario" element={<Inventario />} />
             <Route path="/caja" element={<Caja />} />
             <Route path="/busquedaProd" element={<BusquedaProd />} />

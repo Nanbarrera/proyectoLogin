@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProductContext } from './ProductContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Ticket from './Ticket';
+import Ticket from './../ventaTicket/Ticket';
 
 
 function Sidebar() {

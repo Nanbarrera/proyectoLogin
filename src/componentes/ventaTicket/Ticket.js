@@ -1,5 +1,5 @@
 import React from 'react';
-import './ticket.css';
+import './Ticket.css';
 import logo from './../Assets/logo.png';
 
 const Ticket = ({ products = [], totalPrice = 0, cashPayment = 0, change = 0 }) => {

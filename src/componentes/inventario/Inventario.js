@@ -59,9 +59,11 @@ function Inventario() {
                                         <th>Costo</th>
                                         <th>Venta</th>
                                         <th>Existencia</th>
+                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
