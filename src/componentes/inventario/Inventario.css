@@ -4,12 +4,13 @@
     margin-bottom: 50px;
 }
 
-.search-bar label {
-    margin-right: 10px;
+.search-bar1 label {
+    margin-right: 25px;
     font-size: 20px;
+    justify-content: center;
 }
 
-.search-bar input[type="text"] {
+.search-bar1 input[type="text"] {
     padding: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -25,8 +26,9 @@
     font-size: 18px;
     font-weight: bold;
 }
-
-
+.Ibuscar{
+    text-align:center;
+}
 
 /* Estilos para la tabla */
 .tableI {
@@ -45,31 +47,4 @@
 .tableI th {
     background-color: #f2f2f2;
     text-align: center;
-}
-
-/* Estilos para el monto a cobrar */
-.amount-to-payVentas {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items:flex-end;
-    margin-bottom: 10px;
-}
-
-/* Estilos para el botón */
-.checkout-buttonVT{
-    background-color: #2996aeef;
-    color: #000;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    font-size: 20px; /* Tamaño de fuente más pequeño */
-    padding: 8px 16px; /* Padding más pequeño */
-    font-weight: bold;
-}
-
-.inputCant{
-    display: flex;
-    justify-content:end;
 }

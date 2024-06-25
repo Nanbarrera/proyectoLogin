@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Ticket from './Ticket'; // Ajusta la ruta según la estructura de tu proyecto
-import { ProductContext } from './ProductContext'; // Ajusta la ruta según la estructura de tu proyecto
+import { ProductContext } from '../venta/ProductContext'; // Ajusta la ruta según la estructura de tu proyecto
 
 const TicketPage = () => {
     const { products, totalPrice, cashPayment, change } = useContext(ProductContext);

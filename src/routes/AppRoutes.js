@@ -6,10 +6,12 @@ import BusquedaProd from './../componentes/venta/busquedaProd';
 import TicketPage from './../componentes/venta/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
+import Empleado from '../componentes/empleado/Empleado';
 
 const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/empleado" element={<Empleado />}></Route>
             <Route path="/inventario" element={<Inventario />} />
             <Route path="/caja" element={<Caja />} />
             <Route path="/busquedaProd" element={<BusquedaProd />} />

@@ -1,0 +1,72 @@
+/* Empleado_DC.css */
+.empleado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.NombreE, .NumeroT {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.DineroC {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.DineroC h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.cash-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cash-info div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.cash-info div span {
+  font-size: 14px;
+}
+
+.HoraI, .FondoI, .VentaT, .HoraC {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HoraI span, .FondoI span, .VentaT span, .HoraC span {
+  color: #555;
+}
