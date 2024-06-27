@@ -3,6 +3,8 @@ import { SidebarData } from './SidebarData';
 import Empleado_DC from './Empleado_DC';
 import { useNavigate } from 'react-router-dom';
 
+
+
 function Empleado() {
     const handleLogout = () => {
         window.location.pathname = "/login";
