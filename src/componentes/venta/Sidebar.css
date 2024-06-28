@@ -93,3 +93,36 @@
     font-weight: bold;
 }
 
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .Sidebar {
+        width: 60px;
+    }
+
+    .SidebarList .row {
+        justify-content: center;
+    }
+    .row #icon {
+        flex: 1;
+    }
+
+    .row #title {
+        display: none;
+    }
+
+    /*.logoutButton {
+        display: none;
+    }*/
+
+    .content {
+        width: calc(100% - 60px);
+        padding-left: 60px;
+    }
+
+    .header {
+        
+        font-size: 24px;
+    }
+
+    
+}

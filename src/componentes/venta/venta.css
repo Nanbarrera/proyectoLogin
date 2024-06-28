@@ -199,3 +199,56 @@ button {
     text-align: center;
 }
 
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .nomBusquedaV {
+        font-size: 16px;
+    }
+
+    .header {
+        padding: 30px 0; /* Reducir el padding en pantallas pequeñas */
+        font-size: 28px; /* Tamaño de fuente un poco menor */
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar label {
+        margin-bottom: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .ticket-sales-button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .table th, .table td {
+        padding: 6px;
+    }
+
+    .payment-item {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .button-group button {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .amount-valueV {
+        font-size: 1.5em;
+    }
+
+    .print-buttonV {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
