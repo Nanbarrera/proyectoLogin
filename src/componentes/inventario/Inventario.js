@@ -3,7 +3,6 @@ import './Inventario.css';
 import { SidebarData } from './SidebarData';
 import { useNavigate } from 'react-router-dom';
 
-
 function Inventario() {
     const navigate = useNavigate();  // Inicializa el hook useNavigate
 
@@ -15,7 +14,6 @@ function Inventario() {
     return (
         <div className="principal">
             <div className="container">
-
                 <div className="Sidebar">
                     <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
@@ -32,7 +30,6 @@ function Inventario() {
                     <div><button className="logoutButton" onClick={handleLogout}>
                         Salir
                     </button></div>
-
                 </div>
 
                 <div className="content">
@@ -65,13 +62,15 @@ function Inventario() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
