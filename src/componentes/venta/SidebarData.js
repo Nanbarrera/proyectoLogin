@@ -15,7 +15,7 @@ export const SidebarData = [
     {
         title: "Caja",
         icon: <AdfScannerIcon />,
-        link: "/cajaTotal "
+        link: "/cajaVenta "
     },
     {
         title: "Productos",
