@@ -35,4 +35,19 @@
 }
 .backButton:hover {
     background-color: #676967;
-  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .tableBP {
+        font-size: 14px; /* Reducir tamaño de fuente en pantallas más pequeñas */
+    }
+
+    .button-container {
+        justify-content: center; /* Centrar botones en pantallas más pequeñas */
+    }
+
+    .backButton {
+        padding: 8px 16px; /* Reducir padding en botones */
+    }
+}

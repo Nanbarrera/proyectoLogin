@@ -4,22 +4,44 @@ import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import logo from './../Assets/logo.png';
+import axios from 'axios';
+
+const URI ='http://localhost:4000/api/login'
 
 const LoginForm = () => {
-    const [username, setUsername] = useState("admin");
-    const [password, setPassword] = useState("123456");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    //const [setIsLoggedIn] = useState(false);
+    const navigate = useNavigate(); 
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        if (username && password) {
-            setIsLoggedIn(true);
-            navigate('/caja');
-        } else {
-            alert("Por favor, introduce un nombre de usuario y una contraseña.");
-        }
+    const getLogin = async () =>{
+        console.log(username,password)
+            const res = await axios.post(URI, {
+                username:username,
+                password:password
+            })
+            console.log(res.data==="Invalid credentials");
+
+            if(res.data!="Invalid credentials"){
+                navigate('/caja')
+            } else{
+               alert("Usuario o contraseña incorrecta")
+            }
     }
+
+    const handleLogin =  (e) => {
+        e.preventDefault(); 
+        getLogin();
+        
+        //if(username, password){
+            //setIsLoggedIn(true);
+            //navigate('/caja');
+        //} else{
+            //alert("Por favor, introduce un nombre de usuario y una contraseña.");
+        //}
+    }
+
+
 
     return (
         <div className="wrapper">
@@ -48,5 +70,3 @@ const LoginForm = () => {
 }
 
 export default LoginForm;
-
-
