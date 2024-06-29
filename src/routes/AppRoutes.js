@@ -7,10 +7,12 @@ import TicketPage from './../componentes/ventaTicket/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
 import Empleado from '../componentes/empleado/Empleado';
+import CajaVenta from './../componentes/cajaVenta/CajaVenta';
 
 const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/cajaVenta" element={<CajaVenta />} />
             <Route path="/empleado" element={<Empleado />} />
             <Route path="/inventario" element={<Inventario />} />
             <Route path="/caja" element={<Caja />} />

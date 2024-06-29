@@ -58,14 +58,18 @@ function Inventario() {
                             <table className="tableI">
                                 <thead>
                                     <tr>
+                                        <th>Producto</th>
                                         <th>Descripción</th>
                                         <th>Costo</th>
                                         <th>Venta</th>
                                         <th>Existencia</th>
+                                        <th>Categoría</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

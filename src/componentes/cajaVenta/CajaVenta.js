@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { SidebarData } from './SidebarData';
-import Empleado_DC from './Empleado_DC';
+import CajaVentaT from './CajaVentaT';
 import { useNavigate } from 'react-router-dom';
 
 
-
-function Empleado() {
+function CajaVenta() {
     const handleLogout = () => {
         window.location.pathname = "/login";
     }
@@ -35,10 +34,10 @@ function Empleado() {
 
                 <div className="content">
                     <div className="header-container">
-                        <h1 className="header">EMPLEADO</h1>
+                        <h1 className="header">CAJA</h1>
                     </div>
                     <div className="main-content">
-                        <Empleado_DC/> 
+                        <CajaVentaT/> 
                     </div>
                 </div>
             </div>
@@ -46,4 +45,5 @@ function Empleado() {
     );
 }
 
-export default Empleado;
+export default CajaVenta
+;
