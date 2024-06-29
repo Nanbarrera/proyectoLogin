@@ -41,7 +41,7 @@ function Empleado() {
                         <Empleado_DC/> 
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 }
