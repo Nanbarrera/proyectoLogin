@@ -12,7 +12,7 @@ function CajaD() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const id_user = 1; // Ajusta esto según tu lógica para obtener el ID del usuario
+            const id_user = 1; // Ejemplo: Ajusta según tu lógica para obtener el ID del usuario
             const res = await Axios.post(URI, { id_user, monto_inicial });
             console.log(res.data);
             alert(`Dinero inicial en caja registrado: ${res.data.monto_inicial}`);
@@ -52,5 +52,7 @@ function CajaD() {
 }
 
 export default CajaD;
+
+
 
 
