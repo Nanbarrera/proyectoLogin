@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from './../Assets/logo.png';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     //const [setIsLoggedIn] = useState(false);
-    //const navigate = useNavigate(); 
+    const navigate = useNavigate(); 
 
     const getLogin = async () =>{
         console.log(username,password)
@@ -20,12 +20,19 @@ const LoginForm = () => {
                 username:username,
                 password:password
             })
-            console.log(res.data);
+            console.log(res.data==="Invalid credentials");
+
+            if(res.data!="Invalid credentials"){
+                navigate('/caja')
+            } else{
+               alert("Usuario o contraseña incorrecta")
+            }
     }
 
     const handleLogin =  (e) => {
         e.preventDefault(); 
         getLogin();
+        
         //if(username, password){
             //setIsLoggedIn(true);
             //navigate('/caja');
