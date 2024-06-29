@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import './Inventario.css';
 import { SidebarData } from './SidebarData';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import { Axios } from "axios";
 
 const URI = 'http://localhost:4000/api/productos'
 
 const [productos, setProducto] =('');
 function Inventario() {
-    const navigate = useNavigate();  // Inicializa el hook useNavigate
+    //const navigate = useNavigate();  // Inicializa el hook useNavigate
 
     const handleLogout = () => {
         // Lógica para salir
