@@ -14,16 +14,12 @@ export const SidebarData = [
     {
         title: "Caja",
         icon: <AdfScannerIcon />,
-<<<<<<< HEAD
         link: "/cajaTotal"
-=======
-        link: "/cajaVenta"
->>>>>>> 204c98d73c6b0a05ba780fe7df88fe9de77f3ea6
     },
     {
         title: "Productos",
         icon: <AddCircleIcon />,
-        link: "/producto"
+        link: "/productoP"
     },
     {
         title: "Inventario",

@@ -7,12 +7,20 @@ import TicketPage from './../componentes/ventaTicket/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
 import Empleado from '../componentes/empleado/Empleado';
+<<<<<<< HEAD
+import Producto from './../componentes/Productos/producto';
+=======
 import CajaVenta from './../componentes/cajaVenta/CajaVenta';
+>>>>>>> 204c98d73c6b0a05ba780fe7df88fe9de77f3ea6
 
 const AppRoutes = () => {
     return (
         <Routes>
+<<<<<<< HEAD
+            <Route path="/producto" element={<Producto />} />
+=======
             <Route path="/cajaVenta" element={<CajaVenta />} />
+>>>>>>> 204c98d73c6b0a05ba780fe7df88fe9de77f3ea6
             <Route path="/empleado" element={<Empleado />} />
             <Route path="/inventario" element={<Inventario />} />
             <Route path="/caja" element={<Caja />} />
