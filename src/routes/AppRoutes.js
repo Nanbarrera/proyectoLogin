@@ -7,6 +7,7 @@ import TicketPage from './../componentes/ventaTicket/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
 import Empleado from './../componentes/empleado/Empleado';
+import Empleado from './../componentes/empleado/Empleado';
 import Producto from './../componentes/Productos/producto';
 import CajaVenta from './../componentes/cajaVenta/CajaVenta'
 
