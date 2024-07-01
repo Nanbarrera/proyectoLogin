@@ -35,13 +35,11 @@ const LoginForm = () => {
         
         //if(username, password){
             //setIsLoggedIn(true);
-            //navigate('/caja');
+            //  navigate('/caja');
         //} else{
             //alert("Por favor, introduce un nombre de usuario y una contraseña.");
         //}
     }
-
-
 
     return (
         <div className="wrapper">

@@ -1,4 +1,4 @@
-form {
+/*form {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -107,9 +107,9 @@ button:hover {
   align-items: center;
   gap: 10px;
 }
-
+*/
 /* Media Queries for Responsiveness */
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {
   form {
     padding: 10px;
     max-width: 100%;
@@ -132,3 +132,4 @@ button:hover {
     padding-left: 20px;
   }
 }
+*/
