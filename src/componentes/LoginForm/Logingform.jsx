@@ -5,14 +5,15 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import logo from './../Assets/logo.png';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext'; // Importa el useAuth
 
 const URI ='http://localhost:4000/api/login'
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    //const [setIsLoggedIn] = useState(false);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const { login } = useAuth(); // Usa el contexto de autenticación
 
     const getLogin = async () =>{
         console.log(username,password)
@@ -22,23 +23,17 @@ const LoginForm = () => {
             })
             console.log(res.data==="Invalid credentials");
 
-            if(res.data!="Invalid credentials"){
-                navigate('/caja')
+            if(res.data !== "Invalid credentials"){
+                login(); // Llama a la función login del contexto
+                navigate('/caja');
             } else{
-               alert("Usuario o contraseña incorrecta")
+               alert("Usuario o contraseña incorrecta");
             }
     }
 
-    const handleLogin =  (e) => {
-        e.preventDefault(); 
+    const handleLogin = (e) => {
+        e.preventDefault();
         getLogin();
-        
-        //if(username, password){
-            //setIsLoggedIn(true);
-            //  navigate('/caja');
-        //} else{
-            //alert("Por favor, introduce un nombre de usuario y una contraseña.");
-        //}
     }
 
     return (
