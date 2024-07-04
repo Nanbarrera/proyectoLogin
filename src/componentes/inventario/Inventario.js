@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Inventario.css';
 import { SidebarData } from './SidebarData';
-//import { useNavigate } from 'react-router-dom';
-import { Axios } from "axios";
+import axios from "axios";
 
-const URI = 'http://localhost:4000/api/productos'
+const URI = 'http://localhost:4000/api/productos';
 
-const [productos, setProducto] =('');
 function Inventario() {
-    //const navigate = useNavigate();  // Inicializa el hook useNavigate
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        axios.get(URI)
+            .then(response => {
+                setProductos(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching the product data:', error);
+            });
+    }, []);
 
     const handleLogout = () => {
         // Lógica para salir
@@ -66,15 +74,19 @@ function Inventario() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    {productos.map((producto) => (
+                                        <tr key={producto.id}>
+                                            <td>{producto.nombre}</td>
+                                            <td>{producto.descripcion}</td>
+                                            <td>${producto.costo_compra}</td>
+                                            <td>${producto.precio_venta}</td>
+                                            <td>{producto.stock}</td>
+                                            <td>{producto.categoria_id}</td>
+                                            <td>
+                                                {/* Aquí puedes agregar botones o enlaces para acciones como editar o eliminar */}
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
@@ -86,4 +98,3 @@ function Inventario() {
 }
 
 export default Inventario;
-

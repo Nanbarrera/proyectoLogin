@@ -17,7 +17,7 @@ const ProductoP = ({ onModify }) => {
   });
   const navigate = useNavigate();
 
-  const [categories, setCategories] = useState(['Electrónica', 'Ropa', 'Alimentos']);
+  const [categories, setCategories] = useState(['Jabon', 'Bebida', 'Sabritas']);
   const [newCategory, setNewCategory] = useState('');
   const [addingCategory, setAddingCategory] = useState(false);
 
