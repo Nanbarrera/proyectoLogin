@@ -1,6 +1,6 @@
 // src/routes/AppRoutes.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './../componentes/LoginForm/Logingform';
 import Sidebar from './../componentes/venta/Sidebar';
 import BusquedaProd from './../componentes/venta/busquedaProd';
@@ -13,11 +13,14 @@ import Pmodificar from './../componentes/Productos/Pmodificar';
 import CajaVenta from './../componentes/cajaVenta/CajaVenta';
 import ProtectedRoute from './ProtectedRoute';
 
+// Aquí se simula la autenticación, cambia esto según tu lógica real de autenticación
+const isAuthenticated = true; // Cambia a `false` si el usuario no está autenticado
+
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/" element={<LoginForm />} /> {/* Ruta por defecto */}
+            <Route path="/" element={isAuthenticated ? <Navigate to="/producto" /> : <Navigate to="/login" />} />
             <Route path="/producto" element={<ProtectedRoute element={<Producto />} />} />
             <Route path="/Pmodificar" element={<ProtectedRoute element={<Pmodificar />} />} /> 
             <Route path="/cajaVenta" element={<ProtectedRoute element={<CajaVenta />} />} />
@@ -32,5 +35,3 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
-
-
