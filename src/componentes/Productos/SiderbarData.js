@@ -19,7 +19,7 @@ export const SidebarData = [
     {
         title: "Productos",
         icon: <AddCircleIcon />,
-        link: "/productoP"
+        link: "/producto"
     },
     {
         title: "Inventario",

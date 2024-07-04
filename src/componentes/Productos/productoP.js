@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import './producto.css'; 
+import './producto.css';
+import { useNavigate } from 'react-router-dom';
 
-const ProductoP = () => {
+const ProductoP = ({ onModify }) => {
   const [product, setProduct] = useState({
     name: '',
     description: '',
@@ -14,6 +15,7 @@ const ProductoP = () => {
     usesInventory: false,
     icon: ''
   });
+  const navigate = useNavigate();
 
   const [categories, setCategories] = useState(['Electrónica', 'Ropa', 'Alimentos']);
   const [newCategory, setNewCategory] = useState('');
@@ -31,7 +33,6 @@ const ProductoP = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('New Product:', product);
-    // Aquí podrías agregar la lógica para enviar los datos a un servidor
     setProduct({
       name: '',
       description: '',
@@ -56,26 +57,23 @@ const ProductoP = () => {
 
   const handleNew = () => {
     console.log('Nuevo producto');
-    // Lógica para nuevo producto
-  };
-
-  const handleModify = () => {
-    console.log('Modificar producto');
-    // Lógica para modificar producto
   };
 
   const handleCancel = () => {
     console.log('Cancelar');
-    // Lógica para cancelar
+  };
+
+  const handleNavigation = () => {
+    navigate('/Pmodificar');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="button-container">
-        <button type="button" onClick={handleNew} className="top-button">Nuevo</button>
-        <button type="button" onClick={handleModify} className="top-button">Modificar</button>
+    <form onSubmit={handleSubmit} className="formP">
+      <div className="button-containerP">
+        <button type="button" onClick={handleNew} className="top-buttonP">Nuevo</button>
+        <button type="button" onClick={handleNavigation} className="top-buttonP">Modificar</button>
       </div>
-      <div>
+      <div className="input-containerP">
         <label>Nombre:</label>
         <input
           type="text"
@@ -85,7 +83,7 @@ const ProductoP = () => {
           required
         />
       </div>
-      <div>
+      <div className="input-containerP">
         <label>Descripción:</label>
         <input
           type="text"
@@ -95,7 +93,7 @@ const ProductoP = () => {
           required
         />
       </div>
-      <div>
+      <div className="input-containerP">
         <label>Se vende por:</label>
         <select
           name="unit"
@@ -108,35 +106,37 @@ const ProductoP = () => {
           <option value="package">Paquete</option>
         </select>
       </div>
-      <div className="input-with-icon">
+      <div className="input-with-iconP">
         <label>
-          <div className="input-container">
+          <div className="input-containerP">
             Precio costo:
-            <input
-              type="number"
-              name="costPrice"
-              value={product.costPrice}
-              onChange={handleChange}
-              required
-            />
+            <div className="input-with-symbolP">
+              <span>$</span>
+              <input
+                type="number"
+                name="costPrice"
+                value={product.costPrice}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
         </label>
       </div>
-      <div className="input-with-icon">
+      <div className="input-with-iconP">
         <label>
-        </label>
-      </div>
-      <div className="input-with-icon">
-        <label>
-          <div className="input-container">
+          <div className="input-containerP">
             Precio de venta:
-            <input
-              type="number"
-              name="salePrice"
-              value={product.salePrice}
-              onChange={handleChange}
-              required
-            />
+            <div className="input-with-symbolP">
+              <span>$</span>
+              <input
+                type="number"
+                name="salePrice"
+                value={product.salePrice}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
         </label>
       </div>
@@ -165,7 +165,7 @@ const ProductoP = () => {
           <option value="addNew">Agregar nueva categoría</option>
         </select>
         {addingCategory && (
-          <div className="new-category-container">
+          <div className="new-category-containerP">
             <input
               type="text"
               value={newCategory}
@@ -173,13 +173,13 @@ const ProductoP = () => {
               placeholder="Nueva categoría"
               required
             />
-            <button type="button" onClick={handleAddCategory} className="add-category-button">
+            <button type="button" onClick={handleAddCategory} className="add-category-buttonP">
               <FaPlus /> Agregar
             </button>
           </div>
         )}
       </div>
-      <div>
+      <div className="input-containerP">
         <label>
           Utiliza inventario:
           <input
@@ -190,30 +190,32 @@ const ProductoP = () => {
           />
         </label>
       </div>
-      <div className="min-max-container">
-        <span className="min-max-label">Mínimo:</span>
+      <div className="min-max-containerP">
+        <span className="min-max-labelP">Mínimo:</span>
         <input
           type="number"
           name="minProfit"
-          className="min-max-input"
+          className="min-max-inputP"
           value={product.minProfit}
           onChange={handleChange}
         />
-        <span className="min-max-label">Máximo:</span>
+        <span className="min-max-labelP">Máximo:</span>
         <input
           type="number"
           name="maxProfit"
-          className="min-max-input"
+          className="min-max-inputP"
           value={product.maxProfit}
           onChange={handleChange}
         />
       </div>
-      <div className="button-container">
-        <button type="submit" className="bottom-button">Guardar</button>
-        <button type="button" onClick={handleCancel} className="bottom-button">Cancelar</button>
+      <div className="button-containerP">
+        <button type="submit" className="bottom-buttonP">Guardar</button>
+        <button type="button" onClick={handleCancel} className="bottom-buttonP">Cancelar</button>
       </div>
     </form>
   );
 };
 
 export default ProductoP;
+
+

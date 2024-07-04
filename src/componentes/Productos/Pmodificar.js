@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SidebarData } from './SiderbarData';
-import ProductoP from "./productoP";
+
 import ModificarP from "./modificar";
 
 function Pmodificar() {
@@ -33,10 +33,10 @@ function Pmodificar() {
 
         <div className="content">
             <div className="header-container">
-                <h1 className="header">PRODUCTO</h1>
+                <h1 className="header">MODIFICAR</h1>
             </div>
             <div className="main-content">
-                <ProductoP/> 
+                <ModificarP/> 
             </div>
            
         </div>

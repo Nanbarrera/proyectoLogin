@@ -9,6 +9,7 @@ import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
 import Empleado from './../componentes/empleado/Empleado';
 import Producto from './../componentes/Productos/producto';
+import Pmodificar from './../componentes/Productos/Pmodificar';
 import CajaVenta from './../componentes/cajaVenta/CajaVenta';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -18,6 +19,7 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/" element={<LoginForm />} /> {/* Ruta por defecto */}
             <Route path="/producto" element={<ProtectedRoute element={<Producto />} />} />
+            <Route path="/Pmodificar" element={<ProtectedRoute element={<Pmodificar />} />} /> 
             <Route path="/cajaVenta" element={<ProtectedRoute element={<CajaVenta />} />} />
             <Route path="/empleado" element={<ProtectedRoute element={<Empleado />} />} />
             <Route path="/inventario" element={<ProtectedRoute element={<Inventario />} />} />
