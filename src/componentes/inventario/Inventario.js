@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './Inventario.css';
 import { SidebarData } from './SidebarData';
 import axios from "axios";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const URI = 'http://localhost:4000/api/productos';
 
@@ -19,8 +20,17 @@ function Inventario() {
     }, []);
 
     const handleLogout = () => {
-        // Lógica para salir
         window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
+    }
+
+    const handleDelete = (id) => {
+        axios.delete(`${URI}/${id}`)
+            .then(() => {
+                setProductos(productos.filter(producto => producto.id !== id));
+            })
+            .catch(error => {
+                console.error('Error deleting the product:', error);
+            });
     }
 
     return (
@@ -39,9 +49,11 @@ function Inventario() {
                             </li>
                         ))}
                     </ul>
-                    <div><button className="logoutButton" onClick={handleLogout}>
-                        Salir
-                    </button></div>
+                    <div>
+                        <button className="logoutButton" onClick={handleLogout}>
+                            Salir
+                        </button>
+                    </div>
                 </div>
 
                 <div className="content">
@@ -83,7 +95,9 @@ function Inventario() {
                                             <td>{producto.stock}</td>
                                             <td>{producto.categoria_id}</td>
                                             <td>
-                                                {/* Aquí puedes agregar botones o enlaces para acciones como editar o eliminar */}
+                                                <button className="eliminar" onClick={() => handleDelete(producto.id)}>
+                                                    <DeleteIcon />
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
