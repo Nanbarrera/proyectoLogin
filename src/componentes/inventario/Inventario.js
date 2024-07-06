@@ -147,18 +147,38 @@ function Inventario() {
             console.error('Error fetching the product data:', error);
         }
     };
-
-
     const handleSearch = async () => {
         try {
             const response = await axios.get(`${URI}/search/name`, {
                 params: { name: searchTerm }
             });
-            setProductos(response.data);
+            if (response.data.length === 0) {
+                console.log('El producto no existe.');
+                setProductos([]);  // O puedes dejar esto fuera si prefieres no cambiar el estado de productos cuando no hay resultados.
+            } else {
+                
+                setProductos(response.data);
+            }
         } catch (error) {
             console.error('Error searching the product data:', error);
+            
         }
     };
+    
+
+    // const handleSearch = async () => {
+    //     try {
+    //         const response = await axios.get(`${URI}/search/name`, {
+    //             params: { name: searchTerm }
+            
+    //         });
+            
+    //         setProductos(response.data);
+            
+    //     } catch (error) {
+    //         console.error('Error searching the product data:', error);
+    //     }
+    // };
 
     const handleCategorySearch = async () => {
         try {
@@ -184,9 +204,8 @@ function Inventario() {
     };
 
     const handleLogout = () => {
-        // Lógica para salir
-        window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
-    }
+        window.location.pathname = "/login";
+    };
 
     return (
         <div className="principal">
@@ -266,7 +285,12 @@ function Inventario() {
                                             <td>{producto.stock}</td>
                                             <td>{producto.id_categoria}</td>
                                             <td>
-                                                {/* Aquí puedes agregar botones o enlaces para acciones como editar o eliminar */}
+                                                {
+                                                    <button onClick={() => handleDelete(producto.id)}>
+                                                          <DeleteIcon />
+
+                                                    </button>
+                                                }
                                             </td>
                                         </tr>
                                     ))}
