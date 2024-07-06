@@ -184,8 +184,9 @@ function Inventario() {
     };
 
     const handleLogout = () => {
-        window.location.pathname = "/login";
-    };
+        // Lógica para salir
+        window.location.pathname = "/login"; // Redirige al usuario al formulario de inicio de sesión
+    }
 
     return (
         <div className="principal">
@@ -265,12 +266,7 @@ function Inventario() {
                                             <td>{producto.stock}</td>
                                             <td>{producto.id_categoria}</td>
                                             <td>
-                                                {
-                                                    <button onClick={() => handleDelete(producto.id)}>
-                                                          <DeleteIcon />
-
-                                                    </button>
-                                                }
+                                                {/* Aquí puedes agregar botones o enlaces para acciones como editar o eliminar */}
                                             </td>
                                         </tr>
                                     ))}
