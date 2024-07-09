@@ -41,3 +41,22 @@ export const ProductProvider = ({ children }) => {
         </ProductContext.Provider>
     );
 };
+
+
+// import React, { createContext, useState } from 'react';
+
+// export const ProductContext = createContext();
+
+// export const ProductProvider = ({ children }) => {
+//     const [selectedProducts, setSelectedProducts] = useState([]);
+
+//     const addProduct = (product) => {
+//         setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
+//     };
+
+//     return (
+//         <ProductContext.Provider value={{ selectedProducts, addProduct }}>
+//             {children}
+//         </ProductContext.Provider>
+//     );
+// };

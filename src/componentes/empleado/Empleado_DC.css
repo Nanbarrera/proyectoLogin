@@ -1,4 +1,4 @@
-.empleado {
+ .empleado {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,4 +74,5 @@ label {
   justify-content: space-between;
   padding: 8px;
   font-size: 14px;
-}
+} 
+
