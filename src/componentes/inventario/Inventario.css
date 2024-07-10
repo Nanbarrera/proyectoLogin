@@ -47,9 +47,98 @@
 .tableI th {
     background-color: #f2f2f2;
     text-align: center;
-}z
+}
 .eliminar{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+/* Edit product form container styling */
+.editar-producto-form {
+    background-color: #f7f9fc;
+    border: 1px solid #e1e8ed;
+    padding: 30px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.editar-producto-form:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Form header styling */
+.editar-producto-form h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Form fields styling */
+.editar-producto-form input,
+.editar-producto-form select,
+.editar-producto-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccd1d9;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.editar-producto-form input:focus,
+.editar-producto-form select:focus,
+.editar-producto-form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Form buttons styling */
+.editar-producto-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.editar-producto-form button:hover {
+    background-color: #2980b9;
+}
+.error-message-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #f8d7da;
+    color: #000000;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.mensaje-exito{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid rgb(86, 227, 102);
+    background-color: #d7f8d9;
+    color: #000000;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+

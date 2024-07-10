@@ -159,25 +159,25 @@
 //                 console.log('El producto no existe.');
 //                 setProductos([]);  // O puedes dejar esto fuera si prefieres no cambiar el estado de productos cuando no hay resultados.
 //             } else {
-                
+
 //                 setProductos(response.data);
 //             }
 //         } catch (error) {
 //             console.error('Error searching the product data:', error);
-            
+
 //         }
 //     };
-    
+
 
 //     // const handleSearch = async () => {
 //     //     try {
 //     //         const response = await axios.get(`${URI}/search/name`, {
 //     //             params: { name: searchTerm }
-            
+
 //     //         });
-            
+
 //     //         setProductos(response.data);
-            
+
 //     //     } catch (error) {
 //     //         console.error('Error searching the product data:', error);
 //     //     }
@@ -310,23 +310,9 @@
 // export default Inventario;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //4
+
+
 import React, { useState, useEffect } from "react";
 import './Inventario.css';
 import { SidebarData } from './SidebarData';
@@ -339,12 +325,13 @@ const URI = 'http://localhost:4000/api/productos';
 const CATEGORIAS_URI = 'http://localhost:4000/api/categorias';
 
 function Inventario() {
-    const [producto, setProductos] = useState([]);
+    const [productos, setProductos] = useState([]);
     const [categorias, setCategorias] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryTerm, setCategoryTerm] = useState('');
     const [editProducto, setEditProducto] = useState(null);
     const [mensajeExito, setMensajeExito] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         fetchProductos();
@@ -374,7 +361,14 @@ function Inventario() {
             const response = await axios.get(`${URI}/search/name`, {
                 params: { name: searchTerm }
             });
-            setProductos(response.data);
+            if (response.data.length === 0) {
+                console.log('El producto no existe.');
+                setProductos([]);
+                setErrorMessage('El producto no existe.');
+            } else {
+                setProductos(response.data);
+                setErrorMessage('');
+            }
         } catch (error) {
             console.error('Error searching the product data:', error);
         }
@@ -395,7 +389,7 @@ function Inventario() {
         if (window.confirm("¿Estás seguro de que deseas eliminar este producto?")) {
             try {
                 await axios.delete(`${URI}/${id}`);
-                setProductos(producto.filter(producto => producto.id !== id));
+                setProductos(productos.filter(producto => producto.id !== id));
             } catch (error) {
                 console.error('Error deleting the product:', error);
             }
@@ -405,14 +399,12 @@ function Inventario() {
     const handleEdit = (producto) => {
         setEditProducto(producto);
     };
+    
 
     const handleEditSuccess = () => {
         setEditProducto(null);
         fetchProductos();
-        setMensajeExito('¡Producto editado correctamente!');
-        setTimeout(() => {
-            setMensajeExito('');
-        }, 3000); // Limpiar mensaje de éxito después de 3 segundos
+        setMensajeExito('¡El Producto fue editado correctamente!');
     };
 
     const handleLogout = () => {
@@ -488,7 +480,7 @@ function Inventario() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {producto.map((producto) => (
+                                    {productos.map((producto) => (
                                         <tr key={producto.id}>
                                             <td>{producto.nombre}</td>
                                             <td>{producto.descripcion}</td>
@@ -515,11 +507,9 @@ function Inventario() {
                                 <ProductoForm producto={editProducto} onSuccess={handleEditSuccess} />
                             </div>
                         )}
-                        {mensajeExito && (
-                            <div className="mensaje-exito">
-                                {mensajeExito}
-                            </div>
-                        )}
+
+                        {mensajeExito &&<div className="mensaje-exito">{mensajeExito}</div>}
+                        {errorMessage && <div className="error-message-box">{errorMessage}</div>}
                     </div>
                 </div>
             </div>
