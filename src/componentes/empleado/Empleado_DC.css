@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-/* Empleado_DC.css */
-
-.empleado {
-=======
  .empleado {
->>>>>>> 36e98470ccea2a01fb87dbb18c038a5539452cc8
   display: flex;
   flex-direction: column;
   align-items: center;
