@@ -16,7 +16,7 @@ const LoginForm = () => {
     const { login } = useAuth(); // Usa el contexto de autenticación
 
     const getLogin = async () =>{
-        console.log(username,password)
+        console.log(username,password);
             const res = await axios.post(URI, {
                 username:username,
                 password:password
@@ -28,8 +28,8 @@ const LoginForm = () => {
                 navigate('/caja');
             } else{
                alert("Usuario o contraseña incorrecta");
-            }
-    }
+            };
+}
 
     const handleLogin = (e) => {
         e.preventDefault();

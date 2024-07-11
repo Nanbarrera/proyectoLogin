@@ -16,7 +16,7 @@
 /*Estilos de sidebar*/
 .Sidebar {
     height: 100vh;
-    width: 350px;
+    width: 250px;
     background-color: #e6e6e6 ;
     position: sticky; 
     left: 0; 
