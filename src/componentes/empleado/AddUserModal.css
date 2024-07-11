@@ -1,0 +1,67 @@
+/* Estilos para AddUserModal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.modal-content label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-buttons .save-btn,
+.modal-buttons .cancel-btn {
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+}
+
+.modal-buttons .save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-buttons .cancel-btn {
+    background-color: #f44336;
+    color: white;
+}

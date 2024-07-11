@@ -1,3 +1,5 @@
+/* Empleado_DC.css */
+
 .empleado {
   display: flex;
   flex-direction: column;
@@ -29,6 +31,68 @@ label {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.user-list {
+  margin-top: 20px;
+}
+
+.user-list h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.user-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.user-list th, .user-list td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.user-list th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.user-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-list tr:hover {
+  background-color: #f1f1f1;
+}
+
+.user-list button {
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.user-list .edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.user-list .delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.user-list .edit-btn:hover {
+  background-color: #45a049;
+}
+
+.user-list .delete-btn:hover {
+  background-color: #d32f2f;
 }
 
 .DineroC {
@@ -69,7 +133,8 @@ label {
 .HoraI span, .FondoI span, .VentaT span, .HoraC span {
   color: #000000;
 }
-.TotalCorte{
+
+.TotalCorte {
   display: flex;
   justify-content: space-between;
   padding: 8px;
