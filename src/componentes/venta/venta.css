@@ -1,7 +1,7 @@
-/* src/componentes/venta/venta.css */
 .search-bar {
+    position: relative; /* Añade esta línea para que la lista de sugerencias se posicione correctamente */
     display: flex;
-    align-items: center; /* Alinear elementos verticalmente al centro */
+    align-items: center;
     margin-bottom: 50px;
 }
 
@@ -23,12 +23,11 @@
 
 .incremento {
     width: 40px;
-    font-size: 14px; /* Tamaño de fuente más pequeño */
+    font-size: 14px;
     border: 1px solid #000;
     text-align: center;
 }
 
-/* Botones del nombre del producto */
 button {
     padding: 5px 10px;
     font-size: 16px;
@@ -40,12 +39,12 @@ button {
 .search-button {
     background-color: #007bff;
     color: #fff;
-    margin-left: 10px; /* Añadir espacio entre el input y el botón de búsqueda */
+    margin-left: 10px;
 }
 
 .nomBusquedaV {
-    font-weight: bold; /* Negrita */
-    font-size: 10px; /* Tamaño de fuente un poco más grande */
+    font-weight: bold;
+    font-size: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -56,23 +55,21 @@ button {
     margin-left: 10px;
 }
 
-/* Estilos del botón Ventas por ticket */
 .ticket-sales-button {
-    background-color: #696766; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    padding: 5px 10px; /* Relleno del botón */
-    font-size: 16px; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    border-radius: 3px; /* Bordes redondeados */
-    cursor: pointer; /* Cambio de cursor al pasar por encima */
-    margin-left: auto; /* Empujar el botón a la derecha */
+    background-color: #696766;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: auto;
 }
 
 .ticket-sales-button:hover {
-    background-color: #adadaa; /* Color de fondo al pasar por encima */
+    background-color: #adadaa;
 }
 
-/* Estilos tabla */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -91,7 +88,6 @@ button {
     text-align: center;
 }
 
-/* Estilos para la selección total */
 .total-section {
     display: flex;
     justify-content: space-between;
@@ -112,17 +108,16 @@ button {
     padding: 8px;
 }
 
-/* Estilos para la selección total */
 .payment-details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px; /* Agrega un relleno para espaciar los payment-items horizontalmente */
+    padding: 10px;
 }
 
 .payment-item {
-    margin-bottom: 30px; /* Espacio entre cada payment-item */
-    padding: 20px; /* Agrega un relleno para espaciar el contenido dentro de cada payment-item */
+    margin-bottom: 30px;
+    padding: 20px;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -130,9 +125,9 @@ button {
 }
 
 .payment-item > div:first-child {
-    margin-top: 20px; /* Espacio entre el texto y la cantidad */
-    font-weight: bold; /* Negrita */
-    font-size: 18px; /* Tamaño de fuente un poco más grande */
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .delete-buttonV {
@@ -140,7 +135,6 @@ button {
     display: flex;
 }
 
-/* Estilos para el grupo de botones de cancelar y cobrar */
 .button-group {
     display: flex;
     flex-direction: column;
@@ -148,7 +142,7 @@ button {
 }
 
 .button-group button {
-    margin-bottom: 10px; /* Espacio entre los botones */
+    margin-bottom: 10px;
 }
 
 .cancel-buttonV,
@@ -158,26 +152,24 @@ button {
     color: #fff;
 }
 
-/* Estilos para el monto a cobrar */
 .amount-to-pay {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Alinear contenido al principio */
+    justify-content: flex-start;
     margin-bottom: 10px;
 }
 
 .amount-valueV {
     font-size: 2em;
     color: #28a745;
-    margin-bottom: 10px; /* Espacio entre amount-value y print-button */
+    margin-bottom: 10px;
 }
 
 .print-button {
-    margin-top: 10px; /* Espacio debajo del print-button */
+    margin-top: 10px;
 }
 
-/* Estilos para el botón de imprimir ticket */
 .print-buttonV {
     background-color: #c9c2c2ef;
     color: #000;
@@ -186,8 +178,8 @@ button {
     padding: 10px 10px;
     font-size: 16px;
     cursor: pointer;
-    font-size: 14px; /* Tamaño de fuente más pequeño */
-    padding: 8px 16px; /* Padding más pequeño */
+    font-size: 14px;
+    padding: 8px 16px;
 }
 
 .inputCant {
@@ -199,15 +191,38 @@ button {
     text-align: center;
 }
 
-/* Estilos para pantallas más pequeñas */
+.autocomplete-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    position: absolute;
+    top: 100%; /* Posiciona la lista justo debajo del input */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+
 @media (max-width: 768px) {
     .nomBusquedaV {
         font-size: 16px;
     }
 
     .header {
-        padding: 30px 0; /* Reducir el padding en pantallas pequeñas */
-        font-size: 28px; /* Tamaño de fuente un poco menor */
+        padding: 30px 0;
+        font-size: 28px;
     }
 
     .search-bar {

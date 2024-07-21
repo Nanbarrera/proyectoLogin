@@ -15,21 +15,22 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const { login } = useAuth(); // Usa el contexto de autenticación
 
-    const getLogin = async () =>{
-        console.log(username,password);
+    const getLogin = async () => {
+        console.log(username, password);
+        try {
             const res = await axios.post(URI, {
-                username:username,
-                password:password
-            })
-            console.log(res.data==="Invalid credentials");
-
-            if(res.data !== "Invalid credentials"){
-                login(); // Llama a la función login del contexto
+                username: username,
+                password: password
+            });
+            if (res.data !== "Invalid credentials") {
+                const { id_user } = res.data; // Asegúrate de que la respuesta contenga id_user
+                login(id_user); // Llama a la función login del contexto con id_user
                 navigate('/caja');
-            } else{
-               alert("Usuario o contraseña incorrecta");
-            };
-}
+            } 
+        } catch {
+            alert("Usuario o contraseña incorrecta")
+        }
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();

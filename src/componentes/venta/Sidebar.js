@@ -3,75 +3,136 @@ import './Sidebar.css';
 import './venta.css';
 import { SidebarData } from './SidebarData';
 import { useNavigate } from 'react-router-dom';
-import { ProductContext } from './ProductContext';
+import { ProductContext } from './ProductContext'; // Asegúrate de que la ruta sea correcta
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './../ventaTicket/Ticket';
-
+import axios from 'axios'; // Importa axios
 
 function Sidebar() {
     const navigate = useNavigate();
-    const { products, deleteProduct, updateProductQuantity } = useContext(ProductContext);
+    const { products, deleteProduct, updateProductQuantity, clearProducts, addProduct } = useContext(ProductContext);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [cashPayment, setCashPayment] = useState("0");
-    const [change, setChange] = useState(0.00);
+    const [cashPayment, setCashPayment] = useState("");
+    const [change, setChange] = useState("0.00");
     const [showTicket, setShowTicket] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [allProducts, setAllProducts] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
+
+    useEffect(() => {
+        // Fetch all products when component mounts
+        const fetchAllProducts = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/productos');
+                setAllProducts(response.data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+        fetchAllProducts();
+    }, []);
+
+    useEffect(() => {
+        // Filter products based on search term
+        if (searchTerm.length > 0) {
+            const filteredProducts = allProducts.filter(product =>
+                product.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setSuggestions(filteredProducts);
+        } else {
+            setSuggestions([]);
+        }
+    }, [searchTerm, allProducts]);
 
     const handleLogout = () => {
         navigate("/login");
-    }
+    };
 
     const handleNavigation = () => {
         navigate("/busquedaProd");
-    }
+    };
 
     const handleDeleteFromCart = (id) => {
         deleteProduct(id);
         updateTotalPrice(products.filter(product => product.id !== id));
-    }
+    };
 
     const handleQuantityChange = (id, value) => {
-        const quantity = parseInt(value) || 0;
+        const quantity = Math.max(parseInt(value, 10) || 1, 1); // Ensure quantity is at least 1
         updateProductQuantity(id, quantity);
         updateTotalPrice(products.map(product =>
             product.id === id ? { ...product, quantity } : product
         ));
-    }
+    };
 
     const updateTotalPrice = (products) => {
         const total = products.reduce((acc, product) => {
             const quantity = product.quantity || 0;
-            const price = parseFloat(product.price) || 0;
+            const price = parseFloat(product.precio_venta) || 0;
             return acc + (price * quantity);
         }, 0);
         setTotalPrice(total);
-    }
+    };
 
     useEffect(() => {
         updateTotalPrice(products);
     }, [products]);
 
     useEffect(() => {
-        setChange((parseFloat(cashPayment) - totalPrice).toFixed(2));
+        const numericCashPayment = parseFloat(cashPayment) || 0;
+        const computedChange = Math.max(0, numericCashPayment - totalPrice);
+        setChange(computedChange.toFixed(2));
     }, [cashPayment, totalPrice]);
 
     const handleCashPaymentChange = (e) => {
-        const value = e.target.value.trim();
+        const value = e.target.value;
         if (value === "") {
-            setCashPayment("0");
+            setCashPayment("");
         } else if (/^\d*\.?\d*$/.test(value)) {
             setCashPayment(value);
         }
-    }
+    };
 
     const handleCheckout = () => {
-        navigate('/ticket');
-    }
+        setShowTicket(true);
+    };
 
     const handleVentasPorTicket = () => {
-        // Lógica para el botón "Ventas por ticket"
         console.log("Ventas por ticket");
-    }
+    };
+
+    const handleCancel = () => {
+        if (typeof clearProducts === 'function') {
+            clearProducts();
+            setCashPayment("");
+            setChange("0.00");
+            setShowTicket(false);
+        } else {
+            console.error('clearProducts no es una función');
+        }
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleSearchSelect = (product) => {
+        addProduct({ ...product, quantity: 1 });
+        setSearchTerm("");
+        setSuggestions([]);
+    };
+
+    const handleSearchKeyDown = (e) => {
+        if (e.key === "Enter") {
+            const product = suggestions.find(
+                product => product.nombre.toLowerCase() === searchTerm.toLowerCase()
+            );
+            if (product) {
+                handleSearchSelect(product);
+            }
+        }
+    };
 
     return (
         <div className="principal">
@@ -103,19 +164,37 @@ function Sidebar() {
                     <div className="main-content">
                         <div className="search-bar">
                             <label className="nomBusquedaV" htmlFor="search">Nombre del producto:</label>
-                            <input className="nmBuscar" type="text" id="search" placeholder="Buscar..." />
-                            <button className="search-button" onClick={handleNavigation}>
-                                <i className="fas fa-search"></i>
-                            </button>
+                            <input
+                                className="nmBuscar"
+                                type="text"
+                                id="search"
+                                placeholder="Buscar..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                onKeyDown={handleSearchKeyDown}
+                            />
                             <button className="ticket-sales-button" onClick={handleVentasPorTicket}>
                                 Ventas por ticket
                             </button>
+                            {suggestions.length > 0 && (
+                                <ul className="autocomplete-list">
+                                    {suggestions.map((product) => (
+                                        <li
+                                            key={product.id}
+                                            onClick={() => handleSearchSelect(product)}
+                                            className="autocomplete-item"
+                                        >
+                                            {product.nombre } {product.descripcion}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                         <div className="tabla">
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th>Código del producto</th>
+                                        <th>Nombre del producto</th>
                                         <th>Descripción del producto</th>
                                         <th>Precio de venta</th>
                                         <th>Cantidad</th>
@@ -125,17 +204,17 @@ function Sidebar() {
                                 <tbody>
                                     {products.map((product) => (
                                         <tr key={product.id}>
-                                            <td>{product.code}</td>
-                                            <td>{product.description}</td>
-                                            <td>${(parseFloat(product.price) * (product.quantity || 0)).toFixed(2)}</td>
+                                            <td>{product.nombre}</td>
+                                            <td>{product.descripcion}</td>
+                                            <td>${(parseFloat(product.precio_venta) * (product.quantity || 0)).toFixed(2)}</td>
                                             <td>
                                                 <div className="inputCant">
                                                     <input
                                                         className="incremento"
                                                         style={{ width: "60px", height: "30px" }}
                                                         type="number"
-                                                        min="0"
-                                                        value={product.quantity || 0}
+                                                        min="1" // Set minimum value to 1
+                                                        value={product.quantity || 1}
                                                         onChange={(e) => handleQuantityChange(product.id, e.target.value)}
                                                     />
                                                 </div>
@@ -165,21 +244,21 @@ function Sidebar() {
                                             style={{ width: "80px", height: "30px" }}
                                             value={cashPayment}
                                             onChange={handleCashPaymentChange}
+                                            placeholder="0"
                                         />
                                     </div>
                                 </div>
                                 <div className="payment-item">
                                     <div>Cambio:</div>
-                                    <div>${parseFloat(change).toFixed(2)}</div>
+                                    <div>${change}</div>
                                 </div>
                             </div>
                             <div className="button-group">
                                 <button className="checkout-buttonV" onClick={handleCheckout}>Cobrar</button>
-                                <button className="cancel-buttonV">Cancelar</button>
+                                <button className="cancel-buttonV" onClick={handleCancel}>Cancelar</button>
                             </div>
                             <div className="amount-to-pay">
                                 <div className="amount-valueV">${totalPrice.toFixed(2)}</div>
-                                <button className="print-buttonV">Imprimir ticket</button>
                             </div>
                         </div>
                     </div>
@@ -191,5 +270,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-

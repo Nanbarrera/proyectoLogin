@@ -2,18 +2,15 @@
 import React, { useState } from 'react';
 import './caja.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
-
-const URI ='http://localhost:4000/api/turnos'
+const URI = 'http://localhost:4000/api/turnos';
 
 function CajaD() {
-    const [monto_inicial, setmonto_inicial] = useState('');
-
-
-
-
     const [dineroInicial, setDineroInicial] = useState('');
     const navigate = useNavigate();
+    const { userId } = useAuth();
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -21,12 +18,24 @@ function CajaD() {
         setDineroInicial(numericValue ? `$${numericValue}` : '');
     };
 
-    const registrarDinero = () => {
+    const registrarDinero = async () => {
         if (dineroInicial) {
-            //alert(`Dinero inicial en caja registrado: ${dineroInicial}`);
-            navigate('/sidebar');
-        } else {
-            alert('Por favor ingrese el dinero inicial en caja.');
+            console.log('Enviando datos:', { id_user: userId, dinero_inicial: parseFloat(dineroInicial.replace('$', '').replace(',', '')) });
+            try {
+                const res = await axios.post(URI, {
+                    id_user: userId,
+                    dinero_inicial: parseFloat(dineroInicial.replace('$', ''))
+                });
+                if (res.data.error && res.data.error.includes('Ya tienes un turno abierto')) {
+                    alert('Ya tienes un turno abierto. No puedes iniciar otro.');
+                    // Aquí podrías redirigir al usuario a una página apropiada
+                    navigate('/sidebar');
+                } 
+            } catch (error) {
+                navigate('/sidebar')
+            }
+        }else{
+            alert('Por favor ingrese el dinero inicial')
         }
     };
 
@@ -58,6 +67,3 @@ function CajaD() {
 }
 
 export default CajaD;
-
-
-

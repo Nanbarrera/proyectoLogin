@@ -2,10 +2,36 @@ import React, { useState } from 'react';
 import './CajaVentaT.css';
 import { FcMoneyTransfer } from "react-icons/fc";
 import { MdAttachMoney } from "react-icons/md";
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+const URI = 'http://localhost:4000/api/turnos';
 
 function CajaVentaT() {
-    const [employeeName, setEmployeeName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const { userId } = useAuth();
+    const navigate = useNavigate();
+
+    const terminarTurno = async () => {
+        try {
+            const datosParaCerrarTurno = {
+                id_user: userId
+            };
+    
+            console.log('Datos enviados para cerrar turno:', datosParaCerrarTurno);
+    
+            const res = await axios.put(`${URI}/${userId}`, datosParaCerrarTurno);
+    
+            console.log('Respuesta del servidor:', res.data);
+    
+            alert('Turno cerrado exitosamente');
+            navigate('/sidebar');
+        } catch (error) {
+            console.error('Error cerrando el turno:', error.response ? error.response.data : error.message);
+            alert('Error cerrando el turno');
+        }
+    };
+    
 
     return (
         <div>
@@ -32,7 +58,7 @@ function CajaVentaT() {
                     </div>
                 </div>
                 <div className=''>
-                    <button>Terminar turno</button>
+                    <button onClick={terminarTurno}>Terminar turno</button>
                 </div>
             </div>
         </div>

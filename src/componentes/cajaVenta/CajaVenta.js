@@ -34,7 +34,7 @@ function CajaVenta() {
 
                 <div className="content">
                     <div className="header-container">
-                        <h1 className="header">CAJA</h1>
+                        <h1 className="header">CAJA TURNO</h1>
                     </div>
                     <div className="main-content">
                         <CajaVentaT/> 

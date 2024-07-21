@@ -3,6 +3,8 @@ import './Empleado_DC.css';
 import AddUserModal from './AddUserModal'; // Importa el nuevo componente modal
 import EditUserModal from './EditUserModal';
 import { FcMoneyTransfer } from "react-icons/fc";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 
 const URI = 'http://localhost:4000/api/usuarios';
@@ -107,7 +109,7 @@ function Empleado_DC() {
 
     return (
         <div>
-            <button onClick={toggleAddUserModal}>Agregar Usuario</button>
+            <button className="agregar-btn" onClick={toggleAddUserModal}>Agregar Usuario</button>
             <div className="user-list">
                 <h2>Lista de Usuarios</h2>
                 <table>
@@ -126,8 +128,12 @@ function Empleado_DC() {
                                 <td>{user.password}</td>
                                 <td>{user.type_user}</td>
                                 <td>
-                                    <button className="edit-btn" onClick={() => handleEditUser(user)}>Editar</button>
-                                    <button className="delete-btn" onClick={() => handleDeleteUser(user.username)}>Eliminar</button>
+                                    <button onClick={() => handleEditUser(user)}>
+                                        <EditIcon />
+                                    </button>
+                                    <button onClick={() => handleDeleteUser(user.username)}>
+                                        <DeleteIcon />
+                                    </button>
                                 </td>
                             </tr>
                         ))}

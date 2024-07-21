@@ -7,6 +7,7 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
 
+    // Añadir producto al carrito
     const addProduct = (product) => {
         setProducts(prevProducts => {
             // Verifica si el producto ya está en el carrito
@@ -23,10 +24,12 @@ export const ProductProvider = ({ children }) => {
         });
     };
 
+    // Eliminar producto del carrito
     const deleteProduct = (id) => {
         setProducts(products.filter(product => product.id !== id));
     };
 
+    // Actualizar la cantidad de un producto
     const updateProductQuantity = (id, quantity) => {
         setProducts(products.map(product =>
             product.id === id
@@ -35,28 +38,14 @@ export const ProductProvider = ({ children }) => {
         ));
     };
 
+    // Limpiar todos los productos del carrito
+    const clearProducts = () => {
+        setProducts([]); // Restablece la lista de productos a un array vacío
+    };
+
     return (
-        <ProductContext.Provider value={{ products, addProduct, deleteProduct, updateProductQuantity }}>
+        <ProductContext.Provider value={{ products, addProduct, deleteProduct, updateProductQuantity, clearProducts }}>
             {children}
         </ProductContext.Provider>
     );
 };
-
-
-// import React, { createContext, useState } from 'react';
-
-// export const ProductContext = createContext();
-
-// export const ProductProvider = ({ children }) => {
-//     const [selectedProducts, setSelectedProducts] = useState([]);
-
-//     const addProduct = (product) => {
-//         setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
-//     };
-
-//     return (
-//         <ProductContext.Provider value={{ selectedProducts, addProduct }}>
-//             {children}
-//         </ProductContext.Provider>
-//     );
-// };
