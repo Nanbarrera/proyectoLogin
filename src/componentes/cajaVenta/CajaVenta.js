@@ -32,18 +32,18 @@
 
 //                 </div>
 
-//                 <div className="content">
-//                     <div className="header-container">
-//                         <h1 className="header">CAJA</h1>
-//                     </div>
-//                     <div className="main-content">
-//                         <CajaVentaT/> 
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
+                <div className="content">
+                    <div className="header-container">
+                        <h1 className="header">CAJA</h1>
+                    </div>
+                    <div className="main-content">
+                        <CajaVentaT/> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 // export default CajaVenta;
 // // /

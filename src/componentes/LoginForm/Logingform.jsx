@@ -16,26 +16,21 @@ const LoginForm = () => {
     const { login } = useAuth(); // Usa el contexto de autenticación
     const navigate = useNavigate();
 
-    const getLogin = async () => {
-        try {
+    const getLogin = async () =>{
+        console.log(username,password);
             const res = await axios.post(URI, {
-                username: username,
-                password: password
-            });
+                username:username,
+                password:password
+            })
+            console.log(res.data==="Invalid credentials");
 
-            if (res.status === 200) {
+            if(res.data !== "Invalid credentials"){
                 login(); // Llama a la función login del contexto
                 navigate('/caja');
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 401) {
-                setErrorMessage("Usuario o contraseña incorrecta");
-            } else {
-                setErrorMessage("Error del servidor");
-            }
-            setTimeout(() => setErrorMessage(''), 3000); // Limpia el mensaje de error después de 3 segundos
-        }
-    }
+            } else{
+               alert("Usuario o contraseña incorrecta");
+            };
+}
 
     const handleLogin = (e) => {
         e.preventDefault();

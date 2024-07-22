@@ -3,7 +3,6 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './../componentes/LoginForm/Logingform';
 import Sidebar from './../componentes/venta/Sidebar';
-import BusquedaProd from './../componentes/venta/busquedaProd';
 import TicketPage from './../componentes/ventaTicket/TicketPage';
 import Caja from './../componentes/caja/Caja';
 import Inventario from './../componentes/inventario/Inventario';
@@ -27,7 +26,6 @@ const AppRoutes = () => {
             <Route path="/empleado" element={<ProtectedRoute element={<Empleado />} />} />
             <Route path="/inventario" element={<ProtectedRoute element={<Inventario />} />} />
             <Route path="/caja" element={<ProtectedRoute element={<Caja />} />} />
-            <Route path="/busquedaProd" element={<ProtectedRoute element={<BusquedaProd />} />} />
             <Route path="/sidebar" element={<ProtectedRoute element={<Sidebar />} />} />
             <Route path="/ticket" element={<ProtectedRoute element={<TicketPage />} />} />
         </Routes>
