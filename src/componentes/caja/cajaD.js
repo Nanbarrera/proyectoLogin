@@ -1,11 +1,11 @@
 // src/componentes/caja/CajaD.js
-import React, { useState } from 'react';
+import React, { useState,useAuth } from 'react';
 import './caja.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../../context/AuthContext';
 
-const URI = 'http://localhost:4000/api/turnos';
+
+const URI ='http://localhost:4000/api/turnos'
 
 function CajaD() {
     const [dineroInicial, setDineroInicial] = useState('');

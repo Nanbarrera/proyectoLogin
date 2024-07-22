@@ -59,20 +59,14 @@ function Inventario() {
         }
     };
 
-    const handleCategorySearch = async (e) => {
-        const categoryId = e.target.value;
-        setCategoryTerm(categoryId);
-        if (categoryId) {
-            try {
-                const response = await axios.get(`${URI}/search/category`, {
-                    params: { id_categoria: categoryId }
-                });
-                setProductos(response.data);
-            } catch (error) {
-                console.error('Error searching products by category:', error);
-            }
-        } else {
-            fetchProductos();
+    const handleCategorySearch = async () => {
+        try {
+            const response = await axios.get(`${URI}/search/category`, {
+                params: { nombre: categoryTerm }
+            });
+            setProductos(response.data);
+        } catch (error) {
+            console.error('Error searching the product data:', error);
         }
     };
 

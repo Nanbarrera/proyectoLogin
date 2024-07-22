@@ -3,6 +3,7 @@ import { SidebarData } from './SiderbarData';
 
 import ModificarP from "./modificar";
 
+
 function Pmodificar() {
     const handleLogout = () => {
         // Lógica para salir

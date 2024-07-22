@@ -1,3 +1,4 @@
+//componentes/venta/sidebar.js
 import React, { useContext, useState, useEffect } from "react";
 import './Sidebar.css';
 import './venta.css';
@@ -7,8 +8,8 @@ import { ProductContext } from './ProductContext'; // Asegúrate de que la ruta 
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './../ventaTicket/Ticket';
-import axios from 'axios'; // Importa axios
 
+I
 function Sidebar() {
     const navigate = useNavigate();
     const { products, deleteProduct, updateProductQuantity, clearProducts, addProduct } = useContext(ProductContext);
@@ -64,7 +65,7 @@ function Sidebar() {
         updateTotalPrice(products.map(product =>
             product.id === id ? { ...product, quantity } : product
         ));
-    };
+    }
 
     const updateTotalPrice = (products) => {
         const total = products.reduce((acc, product) => {
@@ -100,39 +101,7 @@ function Sidebar() {
 
     const handleVentasPorTicket = () => {
         console.log("Ventas por ticket");
-    };
-
-    const handleCancel = () => {
-        if (typeof clearProducts === 'function') {
-            clearProducts();
-            setCashPayment("");
-            setChange("0.00");
-            setShowTicket(false);
-        } else {
-            console.error('clearProducts no es una función');
-        }
-    };
-
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
-
-    const handleSearchSelect = (product) => {
-        addProduct({ ...product, quantity: 1 });
-        setSearchTerm("");
-        setSuggestions([]);
-    };
-
-    const handleSearchKeyDown = (e) => {
-        if (e.key === "Enter") {
-            const product = suggestions.find(
-                product => product.nombre.toLowerCase() === searchTerm.toLowerCase()
-            );
-            if (product) {
-                handleSearchSelect(product);
-            }
-        }
-    };
+    }
 
     return (
         <div className="principal">
