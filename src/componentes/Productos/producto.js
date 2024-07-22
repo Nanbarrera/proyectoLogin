@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { SidebarData } from './SiderbarData';
 import ProductoP from "./productoP";
-import ModificarP from "./modificar";
+
+
+
 
 function Pmodificar() {
     const handleLogout = () => {

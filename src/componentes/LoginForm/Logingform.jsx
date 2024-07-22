@@ -1,4 +1,3 @@
-// src/componentes/LoginForm/LoginForm.js
 import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
@@ -7,29 +6,36 @@ import logo from './../Assets/logo.png';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext'; // Importa el useAuth
 
-const URI ='http://localhost:4000/api/login'
+const URI = 'http://localhost:4000/api/login';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
+
     const { login } = useAuth(); // Usa el contexto de autenticación
+    const navigate = useNavigate();
 
-    const getLogin = async () =>{
-        console.log(username,password);
+    const getLogin = async () => {
+        try {
             const res = await axios.post(URI, {
-                username:username,
-                password:password
-            })
-            console.log(res.data==="Invalid credentials");
+                username: username,
+                password: password
+            });
 
-            if(res.data !== "Invalid credentials"){
+            if (res.status === 200) {
                 login(); // Llama a la función login del contexto
                 navigate('/caja');
-            } else{
-               alert("Usuario o contraseña incorrecta");
-            };
-}
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                setErrorMessage("Usuario o contraseña incorrecta");
+            } else {
+                setErrorMessage("Error del servidor");
+            }
+            setTimeout(() => setErrorMessage(''), 3000); // Limpia el mensaje de error después de 3 segundos
+        }
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -53,6 +59,8 @@ const LoginForm = () => {
                     <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                     <FaLock className="icon" />
                 </div>
+
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div className="botones">
                     <button className="acceder" type="submit">Acceder</button>

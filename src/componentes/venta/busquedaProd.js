@@ -120,9 +120,7 @@
 
 
 //mio
-
-
-
+//búsquedaProd.js
 import React, { useContext, useState, useEffect } from "react";
 import './Sidebar.css';
 import './busquedaProd.css';
@@ -131,13 +129,14 @@ import { useNavigate } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 import { ProductContext } from './ProductContext';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BusquedaProd() {
     const navigate = useNavigate();
     const { addProduct } = useContext(ProductContext);
     const [productos, setProductos] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         fetchProductos();
@@ -162,11 +161,7 @@ function BusquedaProd() {
 
     const handleAction = (item) => {
         addProduct(item);
-        setSuccessMessage('Producto agregado correctamente');
-        setTimeout(() => {
-            setSuccessMessage('');
-            navigate("/sidebar");
-        }, 2000); // Oculta el mensaje después de 2 segundos y navega al sidebar
+        toast.success('Producto agregado correctamente', { autoClose: 1000 });
     }
 
     const handleLogout = () => {
@@ -216,7 +211,7 @@ function BusquedaProd() {
                         <table className="tableBP">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
+                                    <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Precio</th>
                                     <th>Categoría</th>
@@ -227,8 +222,8 @@ function BusquedaProd() {
                             <tbody>
                                 {filteredProductos.map((item) => (
                                     <tr key={item.id}>
-                                        <td>{item.id}</td>
                                         <td>{item.nombre}</td>
+                                        <td>{item.descripcion}</td>
                                         <td>${typeof item.precio_venta === 'number' ? item.precio_venta.toFixed(2) : item.precio_venta}</td>
                                         <td>{item.categoria}</td>
                                         <td>{item.stock}</td>
@@ -244,13 +239,12 @@ function BusquedaProd() {
                         <div className="button-container">
                             <button className="backButton" onClick={handleBack}>Regresar</button>
                         </div>
-                        {successMessage && <div className="success-message">{successMessage}</div>}
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </div>
     );
 }
 
 export default BusquedaProd;
-    

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import './caja.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const URI ='http://localhost:4000/api/turnos'
 
 function CajaD() {

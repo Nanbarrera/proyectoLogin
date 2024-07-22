@@ -1,119 +1,104 @@
-/* Estilo general del formulario */
-.formP {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  max-width: 650px; /* Ajuste del max-width a 650px */
-  margin: auto;
-}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="number"],
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .flex-item-left, .flex-item-center, .flex-item-right {
+    flex: 1;
+  }
+  
+  .categoria-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .categoria-select-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .add-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #739cad;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #7c7d7e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #959596;
+  }
+  
+  .success-message {
+    color: green;
+    text-align: center;
+  }
+  
+  .error-message {
+    text-align: center;
+    
+  }
+  
+  .categoria-form {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    background-color:  #ffef78;
 
-/* Contenedor de botones */
-.button-containerP {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* Ancho completo del contenedor de botones */
-  margin-bottom: 1rem;
-}
-
-/* Estilo para los botones */
-.top-buttonP,
-.bottom-buttonP {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.top-buttonP:hover,
-.bottom-buttonP:hover {
-  background-color: #0056b3;
-}
-
-/* Contenedor para input con icono */
-.input-with-iconP {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.input-containerP {
-  display: flex;
-  flex-direction: column;
-  width: 50%; /* Ancho del input container ajustado */
-}
-
-.input-containerP input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%; /* Ancho del input al 100% */
-}
-
-.input-with-symbolP {
-  display: flex;
-  align-items: center;
-}
-
-.input-with-symbolP span {
-  padding: 0.5rem;
-  background-color: #e9ecef;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-}
-
-.input-with-symbolP input {
-  flex: 1;
-  border-radius: 0 4px 4px 0;
-  border-left: none;
-}
-
-/* Nueva categoría */
-.new-category-containerP {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.add-category-buttonP {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #28a745;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.3s;
-}
-
-.add-category-buttonP:hover {
-  background-color: #218838;
-}
-
-/* Contenedor para mínimo y máximo */
-.min-max-containerP {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.min-max-labelP {
-  flex: 0 0 50px;
-}
-
-.min-max-inputP {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  }
+  .agregar-button{
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 768px) {
+    .flex-container {
+      flex-direction: column;
+    }
+    .categoria-container, .button-container {
+      max-width: 100%;
+    }
+  }
+  

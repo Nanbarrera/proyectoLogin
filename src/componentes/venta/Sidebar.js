@@ -1,3 +1,4 @@
+//componentes/venta/sidebar.js
 import React, { useContext, useState, useEffect } from "react";
 import './Sidebar.css';
 import './venta.css';
@@ -7,7 +8,6 @@ import { ProductContext } from './ProductContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './../ventaTicket/Ticket';
-
 
 function Sidebar() {
     const navigate = useNavigate();
@@ -37,11 +37,11 @@ function Sidebar() {
             product.id === id ? { ...product, quantity } : product
         ));
     }
-
+    
     const updateTotalPrice = (products) => {
         const total = products.reduce((acc, product) => {
             const quantity = product.quantity || 0;
-            const price = parseFloat(product.price) || 0;
+            const price = parseFloat(product.precio_venta) || 0;
             return acc + (price * quantity);
         }, 0);
         setTotalPrice(total);
@@ -72,6 +72,8 @@ function Sidebar() {
         // Lógica para el botón "Ventas por ticket"
         console.log("Ventas por ticket");
     }
+
+    
 
     return (
         <div className="principal">
@@ -115,7 +117,7 @@ function Sidebar() {
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th>Código del producto</th>
+                                        <th>Nombre del producto</th>
                                         <th>Descripción del producto</th>
                                         <th>Precio de venta</th>
                                         <th>Cantidad</th>
@@ -125,9 +127,9 @@ function Sidebar() {
                                 <tbody>
                                     {products.map((product) => (
                                         <tr key={product.id}>
-                                            <td>{product.code}</td>
-                                            <td>{product.description}</td>
-                                            <td>${(parseFloat(product.price) * (product.quantity || 0)).toFixed(2)}</td>
+                                            <td>{product.nombre}</td>
+                                            <td>{product.descripcion}</td>
+                                            <td>${(parseFloat(product.precio_venta) * (product.quantity || 0)).toFixed(2)}</td>
                                             <td>
                                                 <div className="inputCant">
                                                     <input
@@ -191,5 +193,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-

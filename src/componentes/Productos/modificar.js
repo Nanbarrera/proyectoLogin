@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { SidebarData } from './SiderbarData';
 import './producto.css';
-
 const ModificarP = ({ onBack }) => {
   const [product, setProduct] = useState({
     name: '',
