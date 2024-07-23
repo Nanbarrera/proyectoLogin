@@ -8,8 +8,9 @@ import { ProductContext } from './ProductContext'; // Asegúrate de que la ruta 
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './../ventaTicket/Ticket';
+import axios from "axios";
 
-I
+
 function Sidebar() {
     const navigate = useNavigate();
     const { products, deleteProduct, updateProductQuantity, clearProducts, addProduct } = useContext(ProductContext);
