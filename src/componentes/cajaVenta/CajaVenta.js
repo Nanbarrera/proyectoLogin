@@ -14,6 +14,9 @@ function CajaVenta() {
     return (
         <div className="principal">
             <div className="container">
+    return (
+        <div className="principal">
+            <div className="container">
 
                 <div className="Sidebar">
                 <ul className="SidebarList">
@@ -35,6 +38,7 @@ function CajaVenta() {
                         Salir
                     </button></div>
 
+                </div>
                 </div>
 
                 <div className="content">
