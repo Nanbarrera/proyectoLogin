@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {SidebarData} from './../sidebar/SidebarData';
+import { SidebarData } from './SidebarData';
 import TicketV from './TicketV';
 import { useNavigate } from 'react-router-dom';
 

@@ -5,6 +5,10 @@ import axios from "axios";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProductoForm from '../Productos/productoP'; // Ajusta la ruta según la ubicación real de ProductoForm.js
+import { Link, useNavigate } from 'react-router-dom';
+
+import ls from 'local-storage'
+
 
 const URI = 'http://localhost:4000/api/productos';
 const CATEGORIAS_URI = 'http://localhost:4000/api/categorias';
@@ -22,6 +26,14 @@ function Inventario() {
         fetchProductos();
         fetchCategorias();
     }, []);
+
+    const navigate= useNavigate()
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
 
     const fetchProductos = async () => {
         try {
@@ -59,14 +71,20 @@ function Inventario() {
         }
     };
 
-    const handleCategorySearch = async () => {
-        try {
-            const response = await axios.get(`${URI}/search/category`, {
-                params: { nombre: categoryTerm }
-            });
-            setProductos(response.data);
-        } catch (error) {
-            console.error('Error searching the product data:', error);
+    const handleCategorySearch = async (e) => {
+        const categoryId = e.target.value;
+        setCategoryTerm(categoryId);
+        if (categoryId) {
+            try {
+                const response = await axios.get(`${URI}/search/category`, {
+                    params: { id_categoria: categoryId }
+                });
+                setProductos(response.data);
+            } catch (error) {
+                console.error('Error searching products by category:', error);
+            }
+        } else {
+            fetchProductos();
         }
     };
 
@@ -92,22 +110,26 @@ function Inventario() {
     };
 
     const handleLogout = () => {
-        window.location.pathname = "/login";
+        navigate("/login");
+        ls.remove("isAuth")
     };
 
     return (
         <div className="principal">
             <div className="container">
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
                             <li
                                 key={key}
                                 className="row"
-                                onClick={() => { window.location.pathname = val.link; }}
+                                onClick={() => { navigate(val.link); }}
                             >
-                                <div id="icon">{val.icon}</div>
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
                                 <div id="title">{val.title}</div>
+                                </Link>
+                                
                             </li>
                         ))}
                     </ul>

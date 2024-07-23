@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+var ls = require('local-storage');
 
 const AuthContext = createContext();
 
@@ -8,6 +9,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = (id_user) => {
         setIsAuthenticated(true);
+        ls( "isAuth", true)
         setUserId(id_user);
     };
 

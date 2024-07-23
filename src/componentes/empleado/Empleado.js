@@ -1,16 +1,18 @@
-
-
 import React, { useState } from "react";
 import { SidebarData } from './SidebarData';
 import Empleado_DC from './Empleado_DC';
-
-
+import ls from 'local-storage'
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 function Empleado() {
+
+    const isAuth = ls.get("isAuth")
+    const navigate = useNavigate();
     const handleLogout = () => {
-        window.location.pathname = "/login";
+        ls.remove("isAuth")
+        navigate("/login");
     }
 
     return (
@@ -18,15 +20,18 @@ function Empleado() {
             <div className="container">
 
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
                             <li
                                 key={key}
                                 className="row"
-                                onClick={() => { window.location.pathname = val.link; }}
+                                onClick={() => { navigate(val.link); }}
                             >
-                                <div id="icon">{val.icon}</div>
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
                                 <div id="title">{val.title}</div>
+                                </Link>
+                                
                             </li>
                         ))}
                     </ul>
@@ -41,7 +46,7 @@ function Empleado() {
                         <h1 className="header">EMPLEADO</h1>
                     </div>
                     <div className="main-content">
-                    <Empleado_DC />
+                        <Empleado_DC/> 
                     </div>
                 </div>
             </div> 
