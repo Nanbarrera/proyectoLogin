@@ -5,7 +5,12 @@ import { FaPlus } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import ls from "local-storage";
+=======
+
+import ls from "local-storage"
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 const PRODUCTOS_URI = 'http://localhost:4000/api/productos';
 const CATEGORIAS_URI = 'http://localhost:4000/api/categorias';
@@ -28,6 +33,7 @@ const ProductoForm = ({ producto, onSuccess }) => {
         fetchCategorias();
     }, []);
 
+<<<<<<< HEAD
     const navigate = useNavigate();
 
     const isAuth = ls.get("isAuth");
@@ -37,6 +43,17 @@ const ProductoForm = ({ producto, onSuccess }) => {
             navigate("/");
         }
     }, [isAuth, navigate]);
+=======
+    const navigate= useNavigate()
+    
+    const isAuth = ls.get("isAuth")
+    
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
     useEffect(() => {
         const handleClickOutside = (event) => {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {  useEffect } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 import './CajaVentaT.css';
 import { FcMoneyTransfer } from "react-icons/fc";
 import { MdAttachMoney } from "react-icons/md";
@@ -75,4 +79,8 @@ function CajaVentaT() {
 }
 
 export default CajaVentaT;
+<<<<<<< HEAD
 
+=======
+//sdfghuioiufddzfdgh
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2

@@ -3,7 +3,11 @@ import { SidebarData } from './SidebarData';
 import Empleado_DC from './Empleado_DC';
 import ls from 'local-storage'
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import logo from './../Assets/logo.png'
+=======
+
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 
 function Empleado() {
@@ -20,8 +24,9 @@ function Empleado() {
             <div className="container">
 
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
+<<<<<<< HEAD
                             <React.Fragment key={key}>
                                 {val.title === "Ventas" && (
                                     <li>
@@ -39,6 +44,19 @@ function Empleado() {
                                     </Link>
                                 </li>
                             </React.Fragment>
+=======
+                            <li
+                                key={key}
+                                className="row"
+                                onClick={() => { navigate(val.link); }}
+                            >
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
+                                <div id="title">{val.title}</div>
+                                </Link>
+                                
+                            </li>
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
                         ))}
                     </ul>
                     <div><button className="logoutButton" onClick={handleLogout}>

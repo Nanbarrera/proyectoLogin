@@ -5,7 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import ls from 'local-storage'
+<<<<<<< HEAD
 import logo from './../Assets/logo.png'
+=======
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 
 const URI = 'http://localhost:4000/api/turnos';
@@ -20,6 +23,13 @@ function CajaD() {
         const numericValue = value.replace(/[^0-9.]/g, '');
         setDinero_Inicial(numericValue ? `$${numericValue} ` : '');
     };
+    
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
 
     const isAuth = ls.get("isAuth")
     useEffect(() => {
@@ -79,3 +89,5 @@ function CajaD() {
 }
 
 export default CajaD;
+
+// dstafhgkldsagafcgbajhygvhdafvgbhadgvbhwfgyh

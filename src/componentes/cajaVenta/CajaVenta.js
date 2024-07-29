@@ -3,8 +3,11 @@ import { SidebarData } from './SidebarData';
 import CajaVentaT from './CajaVentaT';
 import { Link, useNavigate } from 'react-router-dom';
 import ls from 'local-storage'
+<<<<<<< HEAD
 import logo from './../Assets/logo.png'
 
+=======
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 function CajaVenta() {
     const navigate = useNavigate();
@@ -16,10 +19,14 @@ function CajaVenta() {
     return (
         <div className="principal">
             <div className="container">
+    return (
+        <div className="principal">
+            <div className="container">
 
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
+<<<<<<< HEAD
                             <React.Fragment key={key}>
                                 {val.title === "Ventas" && (
                                     <li>
@@ -37,12 +44,26 @@ function CajaVenta() {
                                     </Link>
                                 </li>
                             </React.Fragment>
+=======
+                            <li
+                                key={key}
+                                className="row"
+                                onClick={() => { navigate(val.link); }}
+                            >
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
+                                <div id="title">{val.title}</div>
+                                </Link>
+                                
+                            </li>
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
                         ))}
                     </ul>
                     <div><button className="logoutButton" onClick={handleLogout}>
                         Salir
                     </button></div>
 
+                </div>
                 </div>
 
                 <div className="content">

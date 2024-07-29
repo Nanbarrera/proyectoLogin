@@ -1,7 +1,9 @@
+//componentes/venta/sidebar.js
 import React, { useContext, useState, useEffect } from "react";
 import './Sidebar.css';
 import './venta.css';
 import { SidebarData } from './SidebarData';
+<<<<<<< HEAD
 import { useNavigate, Link } from 'react-router-dom';
 import { ProductContext } from './ProductContext';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +14,16 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ls from 'local-storage';
 import logo from './../Assets/logo.png';
+=======
+import { Link, useNavigate } from 'react-router-dom';
+import { ProductContext } from './ProductContext'; // Asegúrate de que la ruta sea correcta
+import DeleteIcon from '@mui/icons-material/Delete';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Ticket from './../ventaTicket/Ticket';
+import axios from 'axios'; // Importa axios
+import ls from 'local-storage'
+
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 function Sidebar() {
     const navigate = useNavigate();
@@ -50,6 +62,7 @@ function Sidebar() {
     }, [searchTerm, allProducts]);
 
     const handleLogout = () => {
+<<<<<<< HEAD
         ls.remove("isAuth");
         navigate("/login");
     };
@@ -60,6 +73,18 @@ function Sidebar() {
             navigate("/");
         }
     }, [isAuth, navigate]);
+=======
+        ls.remove("isAuth")
+        navigate("/login");
+    };
+
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
     const handleDeleteFromCart = (id) => {
         const confirmed = window.confirm("¿Estás seguro de eliminar el producto?");
@@ -184,8 +209,9 @@ function Sidebar() {
             <ToastContainer />
             <div className="container">
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
+<<<<<<< HEAD
                             <React.Fragment key={key}>
                                 {val.title === "Ventas" && (
                                     <li>
@@ -202,6 +228,19 @@ function Sidebar() {
                                     </Link>
                                 </li>
                             </React.Fragment>
+=======
+                            <li
+                                key={key}
+                                className="row"
+                                onClick={() => { navigate(val.link); }}
+                            >
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
+                                <div id="title">{val.title}</div>
+                                </Link>
+                                
+                            </li>
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
                         ))}
                     </ul>
                     <div>

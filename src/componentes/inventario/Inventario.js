@@ -4,12 +4,20 @@ import { SidebarData } from './SidebarData';
 import axios from "axios";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+<<<<<<< HEAD
 import { useNavigate, Link } from 'react-router-dom';
 import ProductoForm from '../Productos/productoP';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ls from 'local-storage';
 import logo from './../Assets/logo.png';
+=======
+import ProductoForm from '../Productos/productoP'; // Ajusta la ruta según la ubicación real de ProductoForm.js
+import { Link, useNavigate } from 'react-router-dom';
+
+import ls from 'local-storage'
+
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 const URI = 'http://localhost:4000/api/productos';
 const CATEGORIAS_URI = 'http://localhost:4000/api/categorias';
@@ -28,6 +36,7 @@ function Inventario() {
         fetchCategorias();
     }, []);
 
+<<<<<<< HEAD
     const navigate = useNavigate();
     const isAuth = ls.get("isAuth");
     useEffect(() => {
@@ -35,6 +44,15 @@ function Inventario() {
             navigate("/");
         }
     }, [isAuth, navigate]);
+=======
+    const navigate= useNavigate()
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
     const fetchProductos = async () => {
         try {
@@ -128,6 +146,7 @@ function Inventario() {
 
     const handleLogout = () => {
         navigate("/login");
+<<<<<<< HEAD
         ls.remove("isAuth");
     };
 
@@ -155,6 +174,9 @@ function Inventario() {
             console.error('Error updating the stock:', error);
             toast.error('Error al actualizar el stock.');
         }
+=======
+        ls.remove("isAuth")
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
     };
 
     return (
@@ -162,8 +184,9 @@ function Inventario() {
             <ToastContainer />
             <div className="container">
                 <div className="Sidebar">
-                    <ul className="SidebarList">
+                <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
+<<<<<<< HEAD
                             <React.Fragment key={key}>
                                 {val.title === "Ventas" && (
                                     <li>
@@ -180,6 +203,19 @@ function Inventario() {
                                     </Link>
                                 </li>
                             </React.Fragment>
+=======
+                            <li
+                                key={key}
+                                className="row"
+                                onClick={() => { navigate(val.link); }}
+                            >
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
+                                <div id="title">{val.title}</div>
+                                </Link>
+                                
+                            </li>
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
                         ))}
                     </ul>
                     <div>

@@ -1,16 +1,31 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 import { SidebarData } from './SiderbarData';
 import{ Link,Navigate,useNavigate} from 'react-router-dom'
 import ProductoP from "./productoP";
+<<<<<<< HEAD
 import ls from 'local-storage'
 import logo from './../Assets/logo.png'
 
+=======
+import ModificarP from "./modificar";
+import { Link, useNavigate } from 'react-router-dom';
+import ls from 'local-storage'
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
 
 function Pmodificar() {
     const handleLogout = () => {
         // Lógica para salir
+<<<<<<< HEAD
     ls.remove("isAuth")
     navigate("/login")
+=======
+        ls.remove("isAuth")
+        navigate("/login")
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
     };
 
     const navigate = useNavigate();
@@ -21,6 +36,7 @@ function Pmodificar() {
 
         <div className="Sidebar">
         <ul className="SidebarList">
+<<<<<<< HEAD
                 {SidebarData.map((val, key) => (
                             <React.Fragment key={key}>
                                 {val.title === "Ventas" && (
@@ -39,6 +55,20 @@ function Pmodificar() {
                                     </Link>
                                 </li>
                             </React.Fragment>
+=======
+                        {SidebarData.map((val, key) => (
+                            <li
+                                key={key}
+                                className="row"
+                                onClick={() => { navigate(val.link); }}
+                            >
+                                <Link to={val.link} >
+                                    <div id="icon">{val.icon}</div>
+                                <div id="title">{val.title}</div>
+                                </Link>
+                                
+                            </li>
+>>>>>>> 0cc0112c17699cfa9ea2db479c8b02f2423aefc2
                         ))}
                     </ul>
             <div><button className="logoutButton" onClick={handleLogout}>
