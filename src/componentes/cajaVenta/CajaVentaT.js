@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, {  useEffect } from 'react';
 import './CajaVentaT.css';
 import { FcMoneyTransfer } from "react-icons/fc";
 import { MdAttachMoney } from "react-icons/md";
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import ls from 'local-storage'
 
 const URI = 'http://localhost:4000/api/turnos';
 
 function CajaVentaT() {
-    const { userId } = useAuth();
+    const { userId, logout } = useAuth();
     const navigate = useNavigate();
+
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
 
     const terminarTurno = async () => {
         try {
@@ -25,6 +33,7 @@ function CajaVentaT() {
             console.log('Respuesta del servidor:', res.data);
     
             alert('Turno cerrado exitosamente');
+            logout(); // Llama a la función logout para cerrar la sesión
             navigate('/sidebar');
         } catch (error) {
             console.error('Error cerrando el turno:', error.response ? error.response.data : error.message);
@@ -66,3 +75,4 @@ function CajaVentaT() {
 }
 
 export default CajaVentaT;
+

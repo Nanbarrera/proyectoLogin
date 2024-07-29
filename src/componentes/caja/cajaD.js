@@ -1,45 +1,57 @@
 // src/componentes/caja/CajaD.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './caja.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import ls from 'local-storage'
+import logo from './../Assets/logo.png'
+
 
 const URI = 'http://localhost:4000/api/turnos';
 
 function CajaD() {
-    const [dineroInicial, setDineroInicial] = useState('');
+    const [dinero_inicial, setDinero_Inicial] = useState('');
     const navigate = useNavigate();
     const { userId } = useAuth();
 
     const handleChange = (e) => {
         const value = e.target.value;
         const numericValue = value.replace(/[^0-9.]/g, '');
-        setDineroInicial(numericValue ? `$${numericValue}` : '');
+        setDinero_Inicial(numericValue ? `$${numericValue} ` : '');
     };
 
+    const isAuth = ls.get("isAuth")
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    })
+
     const registrarDinero = async () => {
-        if (dineroInicial) {
-            console.log('Enviando datos:', { id_user: userId, dinero_inicial: parseFloat(dineroInicial.replace('$', '').replace(',', '')) });
+        if (dinero_inicial) {
+            console.log('Enviando datos:', { id_user: userId, dinero_inicial: parseFloat(dinero_inicial.replace('$', '').replace(',', '')) });
             try {
                 const res = await axios.post(URI, {
                     id_user: userId,
-                    dinero_inicial: parseFloat(dineroInicial.replace('$', ''))
+                    dinero_inicial: parseFloat(dinero_inicial.replace('$', ''))
                 });
                 if (res.data.error && res.data.error.includes('Ya tienes un turno abierto')) {
                     alert('Ya tienes un turno abierto. No puedes iniciar otro.');
                     // Aquí podrías redirigir al usuario a una página apropiada
                     navigate('/sidebar');
-                } 
+                }
             } catch (error) {
                 navigate('/sidebar')
             }
-        }else{
+        } else {
             alert('Por favor ingrese el dinero inicial')
         }
     };
 
+
     const cerrarVentana = () => {
+        ls.remove("isAuth")
         navigate("/login");
     };
 
@@ -54,7 +66,7 @@ function CajaD() {
                 <input
                     type="text"
                     id="dineroInicial"
-                    value={dineroInicial}
+                    value={dinero_inicial}
                     onChange={handleChange}
                     placeholder="Ingrese el dinero inicial"
                 />

@@ -12,9 +12,9 @@ function Caja() {
 
     return (
         <div className="principalC">
-  
-                    <CajaD />
- 
+
+            <CajaD />
+
         </div>
     );
 }

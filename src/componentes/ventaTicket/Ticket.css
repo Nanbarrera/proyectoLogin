@@ -1,55 +1,100 @@
+
+
 .ticket {
-    align-content: center;
-    text-align: center;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 20px 0;
+    width: 240px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
     background-color: #fff;
-}
-
-.ticket h2 {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
     color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
 }
 
-.product-list ul {
-    list-style-type: none;
+.logoPrincipal {
+    text-align: center;
+    margin-bottom: 5px; /* Reduced margin */
+}
+
+.nombreEmpresa {
+    font-size: 1.2em;
+    margin-bottom: 3px; /* Reduced margin */
+}
+
+.imgLogo {
+    width: 200px;
+    height: auto;
+}
+
+.ticket-details {
+    margin-top: 1px; /* Reduced margin */
+}
+
+.ticket-info {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.ticket-info p {
+    margin: 4;
     padding: 0;
 }
 
-.product-list li {
+.product-list h3,
+.payment-info h3 {
+    font-size: 1em;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 3px;
     margin-bottom: 5px;
+    text-align: center;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.product-name {
+    font-weight: bold;
+    flex: 1;
+}
+
+.product-description {
+    flex: 2;
+    text-align: left;
+    padding-left: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+.product-quantity,
+.product-price {
+    font-weight: bold;
+    flex: 1;
+    text-align: right;
 }
 
 .payment-info {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-.payment-info h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
+.payment-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
 }
 
-.payment-info p {
-    margin: 5px 0;
+.label {
+    font-weight: bold;
+    color: #333;
 }
 
-/* Puedes añadir más estilos según tus necesidades */
-
-
-.logoPrincipal{
-    width: 200px;
-    height: 200px; 
-    float: left;
-    padding: 10px;
- }
- 
- .imgLogo{
-     object-fit: cover;
-     width:100%;
-     height:100%;  
- }
- .nombreEmpresa{
-    text-align: center;
+.value {
+    font-weight: bold;
+    color: #333;
 }

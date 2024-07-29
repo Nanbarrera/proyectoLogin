@@ -1,209 +1,66 @@
- .empleado {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  width: 300px;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.NombreE, .NumeroT {
-  margin-bottom: 15px;
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-label {
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+.modal-content label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.input-field {
+.modal-content input {
   width: 100%;
   padding: 8px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.user-list {
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
   margin-top: 20px;
 }
 
-.user-list h2 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.user-list table {
-  width: 60%;
-  border-collapse: collapse;
-  margin: 0 auto;
-}
-
-.user-list th, .user-list td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-
-.user-list th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-.user-list tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.user-list tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Estilos para la tabla */
-.tableI {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.tableI th, .tableI td {
-  border: 1px solid #000000;
-  padding: 8px;
-  text-align: center;
-}
-
-.tableI th {
-  background-color: #f2f2f2;
-  text-align: center;
-}
-.eliminar{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* Edit product form container styling */
-.editar-producto-form {
-  background-color: #f7f9fc;
-  border: 1px solid #e1e8ed;
-  padding: 30px;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.editar-producto-form:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Form header styling */
-.editar-producto-form h2 {
-  color: #34495e;
-  margin-bottom: 20px;
-  font-size: 1.8em;
-  font-weight: bold;
-}
-
-/* Form fields styling */
-.editar-producto-form input,
-.editar-producto-form select,
-.editar-producto-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccd1d9;
-  border-radius: 6px;
-  font-size: 1em;
-  transition: border-color 0.3s ease-in-out;
-}
-
-.editar-producto-form input:focus,
-.editar-producto-form select:focus,
-.editar-producto-form textarea:focus {
-  border-color: #3498db;
-  outline: none;
-}
-
-/* Form buttons styling */
-.editar-producto-form button {
-  background-color: #3498db;
-  color: white;
+.modal-buttons button {
+  padding: 8px 20px;
   border: none;
-  padding: 12px 20px;
+  border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  border-radius: 6px;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in-out;
 }
 
-.editar-producto-form button:hover {
-  background-color: #2980b9;
-}
-.error-message-box {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid red;
-  background-color: #f8d7da;
-  color: #000000;
-  text-align: center;
-  border-radius: 4px;
-  font-weight: bold;
-}
-.mensaje-exito{
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid rgb(86, 227, 102);
-  background-color: #d7f8d9;
-  color: #000000;
-  text-align: center;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-
-
-.agregar-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 20px auto;
-  border: none;
-  border-radius: 25px;
+.modal-buttons .save-btn {
   background-color: #007bff;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  color: #fff;
 }
 
-.agregar-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+.modal-buttons .cancel-btn {
+  background-color: #6c757d;
+  color: #fff;
 }
 
-.agregar-btn:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-}
-
-.agregar-btn:active {
-  transform: scale(0.95);
+.modal-buttons button:hover {
+  opacity: 0.8;
 }

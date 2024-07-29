@@ -2,12 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import './Sidebar.css';
 import './venta.css';
 import { SidebarData } from './SidebarData';
-import { useNavigate } from 'react-router-dom';
-import { ProductContext } from './ProductContext'; // Asegúrate de que la ruta sea correcta
+import { useNavigate, Link } from 'react-router-dom';
+import { ProductContext } from './ProductContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Ticket from './../ventaTicket/Ticket';
-import axios from 'axios'; // Importa axios
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ls from 'local-storage';
+import logo from './../Assets/logo.png';
 
 function Sidebar() {
     const navigate = useNavigate();
@@ -46,16 +50,24 @@ function Sidebar() {
     }, [searchTerm, allProducts]);
 
     const handleLogout = () => {
+        ls.remove("isAuth");
         navigate("/login");
     };
 
-    const handleNavigation = () => {
-        navigate("/busquedaProd");
-    };
+    const isAuth = ls.get("isAuth");
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/");
+        }
+    }, [isAuth, navigate]);
 
     const handleDeleteFromCart = (id) => {
-        deleteProduct(id);
-        updateTotalPrice(products.filter(product => product.id !== id));
+        const confirmed = window.confirm("¿Estás seguro de eliminar el producto?");
+        if (confirmed) {
+            deleteProduct(id);
+            updateTotalPrice(products.filter(product => product.id !== id));
+            toast.success("Producto eliminado correctamente.");
+        }
     };
 
     const handleQuantityChange = (id, value) => {
@@ -94,12 +106,40 @@ function Sidebar() {
         }
     };
 
-    const handleCheckout = () => {
-        setShowTicket(true);
-    };
+    const handleCheckout = async () => {
+        if (products.length === 0) {
+            toast.error("Aún no tienes productos seleccionados.");
+        } else if (cashPayment === "") {
+            toast.error("Te falta poner el pago en efectivo.");
+        } else if (parseFloat(cashPayment) < totalPrice) {
+            toast.error("El pago en efectivo es menor al total. Por favor, ingresa una cantidad suficiente.");
+        } else {
+            try {
+                const turnoId = 1; // ID del turno actual (debe obtenerse dinámicamente)
+                const fechaVenta = new Date().toISOString();
 
-    const handleVentasPorTicket = () => {
-        console.log("Ventas por ticket");
+                for (const product of products) {
+                    await axios.post('http://localhost:4000/api/ventas', {
+                        producto_id: product.id,  // Asegúrate de que estos campos existen y no son nulos
+                        cantidad: product.quantity || 1,
+                        total: totalPrice,
+                        fecha_venta: fechaVenta,
+                        id_turno: turnoId,
+                    });
+
+                    // Mostrar advertencia si el stock está bajo
+                    if (product.stock <= product.stock_minimo) {
+                        toast.warning(`El producto "${product.nombre}" está casi agotado.`);
+                    }
+                }
+
+                setShowTicket(true);
+                toast.success("Productos cobrados con éxito.");
+            } catch (error) {
+                console.error('Error durante el checkout:', error);
+                toast.error("Hubo un error al procesar el checkout. Inténtalo nuevamente.");
+            }
+        }
     };
 
     const handleCancel = () => {
@@ -108,6 +148,7 @@ function Sidebar() {
             setCashPayment("");
             setChange("0.00");
             setShowTicket(false);
+            toast.info("Compra cancelada.");
         } else {
             console.error('clearProducts no es una función');
         }
@@ -118,9 +159,13 @@ function Sidebar() {
     };
 
     const handleSearchSelect = (product) => {
-        addProduct({ ...product, quantity: 1 });
-        setSearchTerm("");
-        setSuggestions([]);
+        if (product.stock < 1) {
+            toast.error(`El producto "${product.nombre}" está agotado.`);
+        } else {
+            addProduct({ ...product, quantity: 1 });
+            setSearchTerm("");
+            setSuggestions([]);
+        }
     };
 
     const handleSearchKeyDown = (e) => {
@@ -136,18 +181,27 @@ function Sidebar() {
 
     return (
         <div className="principal">
+            <ToastContainer />
             <div className="container">
                 <div className="Sidebar">
                     <ul className="SidebarList">
                         {SidebarData.map((val, key) => (
-                            <li
-                                key={key}
-                                className="row"
-                                onClick={() => { navigate(val.link); }}
-                            >
-                                <div id="icon">{val.icon}</div>
-                                <div id="title">{val.title}</div>
-                            </li>
+                            <React.Fragment key={key}>
+                                {val.title === "Ventas" && (
+                                    <li>
+                                        <img src={logo} alt="Logo" style={{ width: '250px', height: 'auto' }} />
+                                    </li>
+                                )}
+                                <li
+                                    className="row"
+                                    onClick={() => { navigate(val.link); }}
+                                >
+                                    <Link to={val.link} className="sidebar-link">
+                                        <div id="icon" className="sidebar-icon">{val.icon}</div>
+                                        <div id="title">{val.title}</div>
+                                    </Link>
+                                </li>
+                            </React.Fragment>
                         ))}
                     </ul>
                     <div>
@@ -173,7 +227,7 @@ function Sidebar() {
                                 onChange={handleSearchChange}
                                 onKeyDown={handleSearchKeyDown}
                             />
-                            <button className="ticket-sales-button" onClick={handleVentasPorTicket}>
+                            <button className="ticket-sales-button" onClick={handleDeleteFromCart}>
                                 Ventas por ticket
                             </button>
                             {suggestions.length > 0 && (
@@ -184,7 +238,7 @@ function Sidebar() {
                                             onClick={() => handleSearchSelect(product)}
                                             className="autocomplete-item"
                                         >
-                                            {product.nombre } {product.descripcion}
+                                            {product.nombre} {product.descripcion}
                                         </li>
                                     ))}
                                 </ul>
@@ -206,14 +260,14 @@ function Sidebar() {
                                         <tr key={product.id}>
                                             <td>{product.nombre}</td>
                                             <td>{product.descripcion}</td>
-                                            <td>${(parseFloat(product.precio_venta) * (product.quantity || 0)).toFixed(2)}</td>
+                                            <td>${(parseFloat(product.precio_venta) * (product.quantity || 1)).toFixed(2)}</td>
                                             <td>
                                                 <div className="inputCant">
                                                     <input
                                                         className="incremento"
                                                         style={{ width: "60px", height: "30px" }}
                                                         type="number"
-                                                        min="1" // Set minimum value to 1
+                                                        min="1"
                                                         value={product.quantity || 1}
                                                         onChange={(e) => handleQuantityChange(product.id, e.target.value)}
                                                     />

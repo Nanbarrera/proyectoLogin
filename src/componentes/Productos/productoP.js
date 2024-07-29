@@ -4,6 +4,8 @@ import './producto.css';
 import { FaPlus } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import ls from "local-storage";
 
 const PRODUCTOS_URI = 'http://localhost:4000/api/productos';
 const CATEGORIAS_URI = 'http://localhost:4000/api/categorias';
@@ -15,6 +17,8 @@ const ProductoForm = ({ producto, onSuccess }) => {
     const [precioVenta, setPrecioVenta] = useState(producto ? producto.precio_venta : '');
     const [categoria, setCategoria] = useState(producto ? producto.categoria_id : '');
     const [stock, setStock] = useState(producto ? producto.stock : '');
+    const [stockMinimo, setStockMinimo] = useState(producto ? producto.stock_minimo : '');
+    const [stockMaximo, setStockMaximo] = useState(producto ? producto.stock_maximo : '');
     const [categorias, setCategorias] = useState([]);
     const [newCategoria, setNewCategoria] = useState({ nombre: '', descripcion: '' });
     const [showCategoriaForm, setShowCategoriaForm] = useState(false);
@@ -23,6 +27,16 @@ const ProductoForm = ({ producto, onSuccess }) => {
     useEffect(() => {
         fetchCategorias();
     }, []);
+
+    const navigate = useNavigate();
+
+    const isAuth = ls.get("isAuth");
+
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/");
+        }
+    }, [isAuth, navigate]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -65,44 +79,55 @@ const ProductoForm = ({ producto, onSuccess }) => {
     };
 
     const handleStockChange = (e) => {
-        const value = e.target.value;
-        setStock(value);
+        setStock(e.target.value);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (stock < 50 || stock > 150) {
-            toast.error('El stock debe ser entre 50 y 150 productos.');
-            return;
-        }
-
+    
+        const CostoCompra = parseFloat(costoCompra).toFixed(2);
+        const PrecioVenta = parseFloat(precioVenta).toFixed(2);
+    
         try {
             const response = producto
                 ? await axios.put(`${PRODUCTOS_URI}/${producto.id}`, {
                     nombre,
                     descripcion,
-                    costo_compra: costoCompra,
-                    precio_venta: precioVenta,
+                    costo_compra: CostoCompra,
+                    precio_venta: PrecioVenta,
                     categoria_id: categoria,
-                    stock
+                    stock,
+                    stock_minimo: stockMinimo,
+                    stock_maximo: stockMaximo
                 })
                 : await axios.post(PRODUCTOS_URI, {
                     nombre,
                     descripcion,
-                    costo_compra: costoCompra,
-                    precio_venta: precioVenta,
+                    costo_compra: CostoCompra,
+                    precio_venta: PrecioVenta,
                     categoria_id: categoria,
-                    stock
+                    stock,
+                    stock_minimo: stockMinimo,
+                    stock_maximo: stockMaximo
                 });
             console.log('Producto guardado:', response.data);
             toast.success(producto ? 'Producto editado correctamente' : 'Producto agregado correctamente');
-            onSuccess(); // Llamar a la función onSuccess para manejar el éxito de la acción
+            onSuccess();
+    
+            // Limpiar el formulario
+            setNombre('');
+            setDescripcion('');
+            setCostoCompra('');
+            setPrecioVenta('');
+            setCategoria('');
+            setStock('');
+            setStockMinimo('');
+            setStockMaximo('');
         } catch (error) {
-            console.error('Error saving product:', error);
-            toast.error(producto ? 'Error al editar el producto' : 'Error al agregar el producto');
+            console.log(error);
         }
     };
+    
 
     return (
         <div className="producto-form-container">
@@ -119,33 +144,54 @@ const ProductoForm = ({ producto, onSuccess }) => {
                 <div className="flex-container">
                     <div className="flex-item-left">
                         <label>Stock:</label>
-                        <input 
-                            type="number" 
-                            min={1} 
-                            value={stock} 
-                            onChange={handleStockChange} 
-                            required 
+                        <input
+                            type="number"
+                            min={1}
+                            value={stock}
+                            onChange={handleStockChange}
+                            required
                         />
                     </div>
-                    
                     <div className="flex-item-right">
+                        <label>Stock Mínimo:</label>
+                        <input
+                            type="number"
+                            min={1}
+                            value={stockMinimo}
+                            onChange={(e) => setStockMinimo(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="flex-item-center">
+                        <label>Stock Máximo:</label>
+                        <input
+                            type="number"
+                            min={1}
+                            value={stockMaximo}
+                            onChange={(e) => setStockMaximo(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="flex-item-center">
                         <label>Costo de compra:</label>
-                        <input 
-                            type="number" 
-                            min={0} 
-                            value={costoCompra} 
-                            onChange={(e) => setCostoCompra(e.target.value)} 
-                            required 
+                        <input
+                            type="number"
+                            min={0}
+                            step="0.01"
+                            value={costoCompra}
+                            onChange={(e) => setCostoCompra(e.target.value)}
+                            required
                         />
                     </div>
                     <div className="flex-item-center">
                         <label>Precio de venta:</label>
-                        <input 
-                            type="number" 
-                            min={0} 
-                            value={precioVenta} 
-                            onChange={(e) => setPrecioVenta(e.target.value)} 
-                            required 
+                        <input
+                            type="number"
+                            min={0}
+                            step="0.01"
+                            value={precioVenta}
+                            onChange={(e) => setPrecioVenta(e.target.value)}
+                            required
                         />
                     </div>
                 </div>
@@ -158,7 +204,7 @@ const ProductoForm = ({ producto, onSuccess }) => {
                                 <option key={cat.id} value={cat.id}>{cat.nombre}</option>
                             ))}
                         </select>
-                        <FaPlus 
+                        <FaPlus
                             className="add-icon"
                             onClick={() => setShowCategoriaForm(!showCategoriaForm)}
                         />

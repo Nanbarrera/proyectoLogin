@@ -7,7 +7,7 @@ import logo from './../Assets/logo.png';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext'; // Importa el useAuth
 
-const URI ='http://localhost:4000/api/login'
+const URI = 'http://localhost:4000/api/login'
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -26,7 +26,7 @@ const LoginForm = () => {
                 const { id_user } = res.data; // Asegúrate de que la respuesta contenga id_user
                 login(id_user); // Llama a la función login del contexto con id_user
                 navigate('/caja');
-            } 
+            }
         } catch {
             alert("Usuario o contraseña incorrecta")
         }

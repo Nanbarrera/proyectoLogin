@@ -120,3 +120,122 @@ button:hover {
       max-width: 100%;
   }
 }
+/* Sidebar Styles */
+.Sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: #e6e6e6;
+  position: sticky; 
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.SidebarList {
+  padding: 0;
+  width: 100%;
+}
+
+.SidebarList .row {
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+  padding-left: 15px; /* Added padding to align items to the left */
+}
+
+.SidebarList .row:hover {
+  cursor: pointer;
+  background-color: #828385;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: black; /* Ensures the link text is black */
+  text-decoration: none;
+}
+
+.sidebar-icon {
+  flex: 20%;
+  display: flex;
+  align-items: center;
+  color: black; /* Ensures the icon is black */
+}
+
+.row #title {
+  flex: 70%; 
+  text-align: left; /* Align text to the left */
+  margin-left: 10px; /* Add some space between the icon and the title */
+}
+
+/* Logout Button */
+.logoutButton {
+  border-radius: 5px;
+  padding: 10px 35px;
+  background-color: #f5f6f7;
+  border: 1px solid #464343;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.logoutButton:hover,
+.logoutButton:focus {
+  background-color: #676a6e;
+  border-color: #f7f3f3;
+  outline: none;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #fbe966, #ececec);
+  padding: 40px 0;
+  font-size: 35px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .Sidebar {
+    width: 60px;
+  }
+
+  .SidebarList .row {
+    justify-content: center;
+  }
+
+  .sidebar-icon {
+    flex: 1;
+  }
+
+  .row #title {
+    display: none;
+  }
+
+  .content {
+    width: calc(100% - 60px);
+    padding-left: 60px;
+  }
+
+  .header {
+    font-size: 24px;
+  }
+}

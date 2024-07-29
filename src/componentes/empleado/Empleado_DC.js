@@ -6,6 +6,9 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../context/AuthContext";
+import ls from 'local-storage'
 
 const URI = 'http://localhost:4000/api/usuarios';
 
@@ -20,6 +23,18 @@ function Empleado_DC() {
     useEffect(() => {
         fetchUsers();
     }, []);
+
+
+
+    const navigate= useNavigate()
+    const isAuth = ls.get("isAuth")
+    useEffect(()=>{
+        if(!isAuth){
+            navigate("/")
+        }
+    })
+    
+
 
     const fetchUsers = async () => {
         try {

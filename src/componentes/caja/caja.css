@@ -3,8 +3,10 @@
   padding: 25px;
 
   box-shadow: 0 0 10px rgb(63, 63, 63);
-  width: 500px; /* Incrementado el ancho a 500px */
-  min-height: 400px; /* Incrementada la altura mínima a 400px */
+  width: 500px;
+  /* Incrementado el ancho a 500px */
+  min-height: 400px;
+  /* Incrementada la altura mínima a 400px */
   text-align: center;
   border: 2px solid #000;
 }
@@ -20,13 +22,15 @@
   margin: 0;
   text-align: left;
   flex-grow: 1;
-  font-size: 30px; /* Tamaño de fuente más grande para el encabezado */
+  font-size: 30px;
+  /* Tamaño de fuente más grande para el encabezado */
 }
 
 .close-btnC {
   background: none;
   border: none;
-  font-size: 20px; /* Tamaño de fuente más grande para el botón de cierre */
+  font-size: 20px;
+  /* Tamaño de fuente más grande para el botón de cierre */
   font-weight: bold;
   cursor: pointer;
   color: #000;
@@ -51,7 +55,8 @@
   display: block;
   margin-bottom: 10px;
   color: #000000;
-  font-size: 30px; /* Tamaño de fuente más grande para las etiquetas */
+  font-size: 30px;
+  /* Tamaño de fuente más grande para las etiquetas */
 }
 
 .form-groupC input {
@@ -59,8 +64,10 @@
   padding: 20px;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 15px; /* Esquinas más redondeadas */
-  font-size: 30px; /* Tamaño de fuente más grande para la entrada */
+  border-radius: 15px;
+  /* Esquinas más redondeadas */
+  font-size: 30px;
+  /* Tamaño de fuente más grande para la entrada */
 }
 
 .btnC {
@@ -68,9 +75,11 @@
   color: rgb(0, 0, 0);
   background-color: #75aaec;
   border: none;
-  border-radius: 20px; /* Esquinas más redondeadas */
+  border-radius: 20px;
+  /* Esquinas más redondeadas */
   cursor: pointer;
-  font-size: 25px; /* Tamaño de fuente más grande para el botón */
+  font-size: 25px;
+  /* Tamaño de fuente más grande para el botón */
 }
 
 .btnC:hover {
